@@ -12,3 +12,4 @@ search functions
 -Question
 
 Hidden theme round -> all 5 questions together as a unit
+**SPELL CHECK API**
