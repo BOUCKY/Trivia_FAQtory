@@ -24,7 +24,7 @@ if __name__ == '__main__':
             for i in range(1,len(rows)):
                 import ipdb
                 player_question = Player(
-                    round = rows[i][0],
+                    theme = rows[i][0],
                     song1 = rows[i][1],
                     question1 = rows[i][2],
                     answer1 = rows[i][3],
