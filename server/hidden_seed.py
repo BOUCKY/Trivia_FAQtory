@@ -16,6 +16,8 @@ if __name__ == '__main__':
     with app.app_context():
         print("Starting seed...")
         # Seed code goes here!
+        Hidden.query.delete()
+        db.session.commit()
 
         with open('hidden.csv', newline='', encoding='utf-8') as seed_file:
             rows = [row for row in csv.reader(seed_file, delimiter=',', quotechar='"')]
