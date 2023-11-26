@@ -1,0 +1,118 @@
+.header{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    background-color: #58c8fc;
+    color: #ffffff;
+}
+.nav-bar{
+    list-style-type: none;
+    display: inline-flex;
+    padding-right: 25px;
+}
+
+
+/* LOGO */
+.left-side-nav {
+    font-size: 40px;
+    float: left;
+    display: inline-flex;
+    padding-left: 25px;
+}
+
+
+/* THE LINKS */
+.nav-bar-list{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.nav-bar-link{
+    position: relative;
+    font-size: 20px;
+    display: block;
+    width:100%;
+    text-decoration: none;
+    color: #ffffff;
+    cursor: pointer;
+}
+.nav-bar-link:hover{
+    opacity: 0.6;
+}
+
+
+.underline{
+    border-bottom: 3px solid #ffffff;
+    box-shadow: 0px 15px 12px -10px rgba(88,200,252,255);
+}
+
+.mobile {
+    color: #ffffff;
+    background-color: #58c8fc;
+    border: none;
+    cursor: pointer;
+    margin-right: 25px;
+    padding: 5px 10px;
+    display: none;
+}
+
+
+@media screen and (max-width: 1115px){
+    .nav-bar.active{
+        list-style-type: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        margin-top: 474px;
+        margin-left: 82%;
+        padding: 0;
+        width: 18%;
+        background-color: white;
+        height: 350px;
+        z-index: 2;
+        border-left: 4px solid #58c8fc;
+        border-bottom: 4px solid #58c8fc;
+    }
+    .nav-bar{
+        display: none;
+    }
+    .nav-bar-list{
+        padding: 20px 0;
+        width: 100%;
+    }
+    .nav-bar-link{
+        text-align: center;
+        color: #58c8fc;
+    }
+    .mobile{
+        display: block;
+    }
+    .mobile:hover{
+        opacity: .5;
+    }
+}
+
+@media screen and (max-width: 950px){
+    .nav-bar-link{
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 700px){
+    .nav-bar.active{
+        width: 25%;
+        margin-left: 75%;
+    }
+    .left-side-nav{
+        font-size: 25px;
+    }
+}
