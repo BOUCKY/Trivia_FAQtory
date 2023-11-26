@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import { useState} from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
+import Logo from '../logo.png'
 import '../styling/Navbar.css'
 
 
@@ -22,6 +23,7 @@ function Navbar(){
     return(
         <div className="header">
             <div className="left-side-nav">
+                <img className="logo" src={Logo} alt='Logo' /> 
                 <p>TRIVIA FAQTORY</p>
             </div>
             <div>
