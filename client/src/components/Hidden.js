@@ -40,14 +40,50 @@ function Hidden(){
         'Y', 'Z'
     ]    
 
+
+    const concatenateQuestions = (hiddenData) => {
+        const questionsArray = [
+          hiddenData.question1,
+          hiddenData.question2,
+          hiddenData.question3,
+          hiddenData.question4,
+          hiddenData.question5,
+        ]
+        return questionsArray.join(' ') // Concatenate all questions into a single string
+      }
+    
+    const concatenateAnswers = (hiddenData) => {
+        const answersArray = [
+          hiddenData.answer1,
+          hiddenData.answer2,
+          hiddenData.answer3,
+          hiddenData.answer4,
+          hiddenData.answer5,
+        ]
+        return answersArray.join(' ') // Concatenate all answers into a single string
+      }
+
+
     // Function to filter trivia based on the starting letter
     const filterHiddenByLetterAndSearch = (letter) => {
-        return hidden.filter(trivia_question =>
-            trivia_question.letter && 
+        return hidden.filter((trivia_question) => {
+          let selectedAttribute;
+          if (selectedFilter === 'question') {
+            selectedAttribute = concatenateQuestions(trivia_question);
+          } else if (selectedFilter === 'answer') {
+            selectedAttribute = concatenateAnswers(trivia_question);
+          } else {
+            selectedAttribute = trivia_question[selectedFilter];
+          }
+    
+          return (
+            trivia_question.letter &&
             trivia_question.letter.toLowerCase() === letter.toLowerCase() &&
-            (trivia_question[selectedFilter] && trivia_question[selectedFilter].toLowerCase().includes(search.toLowerCase()))
-        );
-    };
+            selectedAttribute &&
+            selectedAttribute.toLowerCase().includes(search.toLowerCase())
+          )
+        })
+      }
 
     // Function to check if there are filtered trivia items for each letter
     const getFilteredLetters = () => {
