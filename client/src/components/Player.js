@@ -40,14 +40,43 @@ function Player(){
         'Y', 'Z'
     ]    
 
-    // Function to filter trivia based on the starting letter
-    const filterTriviaByLetterAndSearch = (letter) => {
-        return player.filter(trivia_question =>
+    const concatenateQuestions = (playerData) => {
+        const questionsArray = [
+          playerData.question1,
+          playerData.question2,
+          playerData.question3,
+        ]
+        return questionsArray.join(' '); // Concatenate all questions into a single string
+      }
+
+      const concatenateAnswers = (playerData) => {
+        const answersArray = [
+          playerData.answer1,
+          playerData.answer2,
+          playerData.answer3,
+        ]
+        return answersArray.join(' '); // Concatenate all answers into a single string
+      }
+
+      const filterTriviaByLetterAndSearch = (letter) => {
+        return player.filter((trivia_question) => {
+          let selectedAttribute;
+          if (selectedFilter === 'question') {
+            selectedAttribute = concatenateQuestions(trivia_question);
+          } else if (selectedFilter === 'answer') {
+            selectedAttribute = concatenateAnswers(trivia_question);
+          } else {
+            selectedAttribute = trivia_question[selectedFilter];
+          }
+    
+          return (
             trivia_question.theme &&
             trivia_question.theme.toLowerCase().startsWith(letter.toLowerCase()) &&
-            (trivia_question[selectedFilter] && trivia_question[selectedFilter].toLowerCase().includes(search.toLowerCase()))
-        )
-    }
+            selectedAttribute &&
+            selectedAttribute.toLowerCase().includes(search.toLowerCase())
+          )
+        })
+      }
 
     // Function to check if there are filtered trivia items for each letter
     const getFilteredLetters = () => {

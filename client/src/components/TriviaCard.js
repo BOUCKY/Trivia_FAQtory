@@ -11,8 +11,8 @@ function TriviaCard({id, round, song, question, answer, removeCard, setRound, se
         
     }
 
-    const trash = <FontAwesomeIcon icon={faTrashCan} style={{color: "#204c73",}} size='s' />
-    const edit = <FontAwesomeIcon icon={faPenToSquare} style={{color: "#204c73",}} size='s' />
+    const trash = <FontAwesomeIcon icon={faTrashCan} style={{color: "#204c73",}} size='sm' />
+    const edit = <FontAwesomeIcon icon={faPenToSquare} style={{color: "#204c73",}} size='sm' />
 
 
     const [editing, setEditing] = useState(false); // Add state for editing mode
