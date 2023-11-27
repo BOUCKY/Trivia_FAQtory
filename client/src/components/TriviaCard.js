@@ -1,4 +1,9 @@
+import React, { useState } from "react"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faPenToSquare, faTrashCan } from '@fortawesome/free-regular-svg-icons'
+
 function TriviaCard({round, song, question, answer}){
+
     return(
         <div className="trivia-card-container">
             <div className="trivia-card">
