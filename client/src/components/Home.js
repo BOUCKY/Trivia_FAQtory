@@ -89,7 +89,7 @@ function Home(){
                     filteredLetters[letter] && (
                         <div key={letter}>
                             <p className="letter-heading">{letter}</p>
-                            {filterTriviaByLetterAndSearch(letter).map(filtered_trivia => (
+                            {filterTriviaByLetterAndSearch(letter).sort((a, b) => a.round.localeCompare(b.round)).map(filtered_trivia => (
                                 <TriviaCard
                                     key={filtered_trivia.id}
                                     letter={filtered_trivia.letter}

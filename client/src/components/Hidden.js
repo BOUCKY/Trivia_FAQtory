@@ -89,7 +89,7 @@ function Hidden(){
                     filteredLetters[letter] && (
                         <div key={letter}>
                             <p className="letter-heading">{letter}</p>
-                            {filterHiddenByLetterAndSearch(letter).map(filtered_hidden => (
+                            {filterHiddenByLetterAndSearch(letter).sort((a, b) => a.theme.localeCompare(b.theme)).map(filtered_hidden => (
                                 <HiddenCard
                                     key={filtered_hidden.id}
                                     letter={filtered_hidden.letter}

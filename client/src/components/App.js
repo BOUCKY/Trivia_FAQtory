@@ -17,7 +17,7 @@ function App() {
         <Route path='games' element={<Games />} />
         <Route path='hidden' element={<Hidden />} />
         <Route path='player' element={<Player />} />
-        <Route path='wager' element={<Final />} />
+        <Route path='final' element={<Final />} />
       </Routes>
     </div>
   );
