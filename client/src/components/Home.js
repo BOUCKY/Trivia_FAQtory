@@ -17,6 +17,7 @@ function Home(){
     const [search, setSearch] = useState('')
     const [selectedFilter, setSelectedFilter] = useState('letter')
 
+
     // -----FETCH REQUESTS-----
     useEffect(() => {
         fetch('http://127.0.0.1:5555/trivia')
@@ -63,6 +64,102 @@ function Home(){
 
     const filteredLetters = getFilteredLetters();
 
+    // Delete function
+    const removeCard = (id) => {
+        setTrivia((currentCard) => 
+            currentCard.filter((card) => card.id !== id)
+        )
+    }
+
+    // Edit funcitons
+    const updateQuestion = (cardId, newQuestion) => {
+        fetch(`/trivia/${cardId}`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ question: newQuestion }),
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok')
+            }
+            return response.json()
+        })
+        .then(updatedCard => {
+            setTrivia(prevTrivia =>
+                prevTrivia.map(card => (card.id === cardId ? { ...card, question: updatedCard.question } : card))
+            )
+        })
+        .catch(error => {
+            console.error('There was an error updating the question:', error)
+        })
+    }
+
+    const updateAnswer = (cardId, newAnswer) => {
+        fetch(`/trivia/${cardId}`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ answer: newAnswer }),
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok')
+            }
+            return response.json()
+        })
+        .then(updatedCard => {
+            setTrivia(prevTrivia =>
+                prevTrivia.map(card => (card.id === cardId ? { ...card, answer: updatedCard.answer } : card))
+            )
+        })
+        .catch(error => {
+            console.error('There was an error updating the answer:', error)
+        })
+    }
+
+    const updateSong = (cardId, newSong) => {
+        fetch(`/trivia/${cardId}`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ song: newSong }),
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(updatedCard => {
+            setTrivia(prevTrivia =>
+                prevTrivia.map(card => (card.id === cardId ? { ...card, song: updatedCard.song } : card))
+            );
+        })
+        .catch(error => {
+            console.error('There was an error updating the song:', error);
+        });
+    };
+    
+    const updateRound = (cardId, newRound) => {
+        fetch(`/trivia/${cardId}`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ round: newRound }),
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok')
+            }
+            return response.json()
+        })
+        .then(updatedCard => {
+            setTrivia(prevTrivia =>
+                prevTrivia.map(card => (card.id === cardId ? { ...card, round: updatedCard.round } : card))
+            )
+        })
+        .catch(error => {
+            console.error('There was an error updating the round:', error)
+        })
+    }
+
 
     return(
         <div className="trivia-list">
@@ -92,11 +189,17 @@ function Home(){
                             {filterTriviaByLetterAndSearch(letter).sort((a, b) => a.round.localeCompare(b.round)).map(filtered_trivia => (
                                 <TriviaCard
                                     key={filtered_trivia.id}
+                                    id={filtered_trivia.id}
                                     letter={filtered_trivia.letter}
                                     round={filtered_trivia.round}
                                     song={filtered_trivia.song}
                                     question={filtered_trivia.question}
                                     answer={filtered_trivia.answer}
+                                    removeCard={removeCard}
+                                    setRound={newRound => updateRound(filtered_trivia.id, newRound)}
+                                    setSong={newSong => updateSong(filtered_trivia.id, newSong)}
+                                    setQuestion={newQuestion => updateQuestion(filtered_trivia.id, newQuestion)}
+                                    setAnswer={newAnswer => updateAnswer(filtered_trivia.id, newAnswer)}
                                 />
                             ))}
                         </div>
