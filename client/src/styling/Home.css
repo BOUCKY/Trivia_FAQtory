@@ -1,0 +1,93 @@
+.trivia-list{
+    width: 90%;
+    margin-top: 125px;
+}
+
+.trivia-heading{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+}
+
+.big-logo{
+    height: 300px;
+    margin: 30px 0px;
+}
+
+/* SEARCH BAR */
+.trivia-search{
+    display: flex;
+    width: 90%;
+    height: 40px;
+}
+.search-select{
+    font-family: inherit;
+    font-size: 15px;
+    background-color: #4599c5;
+    color: #ffff;
+    padding-left: 10px;
+    outline: none;
+    border: 1px solid #204c73;
+    border-radius: 10px 0px 0px 10px;
+}
+.search-input{
+    font-size: 15px;
+    font-family: inherit;
+    width: 100%;
+    padding-left: 10px;
+    color: #4599c5;
+    outline: none;
+    border: 1px solid #204c73;
+    border-radius: 0px 10px 10px 0px;
+}
+::placeholder{
+    color: #4599c5;
+}
+
+
+/* THE CARDS */
+.letter-heading{
+    font-size: 50px;
+    width: 100%;
+    border-bottom: 4px solid #204c73;
+    margin: 30px 0px;
+}
+.trivia-card-container{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.trivia-card{
+    width: 90%;
+    border: 2px solid #204c73;
+    border-radius: 2px;
+    margin: 20px 0px;
+    padding: 10px 20px;
+}
+.trivia-card:hover{
+    box-shadow: 5px 5px 10px 0px rgba(69, 153, 197, 0.5);
+}
+.trivia-card-round{
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+}
+.trivia-card-title{
+    font-size: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    font-weight: bold;
+    justify-content: flex-start;
+    align-content: flex-start;
+    flex-direction: column;
+}
+.info{
+    font-size: 12px;
+    padding-left: 10px;
+    font-weight: normal;
+    margin: 0;
+}

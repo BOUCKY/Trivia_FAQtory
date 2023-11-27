@@ -1,4 +1,10 @@
 body{
     margin: 0;
     font-family: 'Bree Serif', serif;
+    color: #204c73;
+}
+
+.App{
+    display: flex;
+    justify-content: center;
 }
