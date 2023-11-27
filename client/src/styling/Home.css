@@ -97,3 +97,69 @@
     font-weight: normal;
     margin: 0;
 }
+.edit-and-delete-buttons{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+.delete-button{
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 18px;
+}
+.delete-button:hover{
+    opacity: 0.6;
+}
+.edit-button{
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 18px;
+}
+.edit-button:hover{
+    opacity: 0.6;
+}
+
+/* EDIT MODE / FORM */
+.edit-mode{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+label{
+    width: 50%;
+    margin: 10px 0px;
+    font-weight: bold;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+input{
+    width: 100%;
+    outline: none;
+    border: 1px solid #204c73;
+    font-family: inherit;
+    color: #204c73;
+    border-radius: 5px;
+}
+textarea{
+    width: 100%;
+    outline: none;
+    border: 1px solid #204c73;
+    font-family: inherit;
+    color: #204c73;
+    border-radius: 5px;
+}
+.save{
+    background-color: #204c73;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin: 10px;
+    cursor: pointer;
+}
+.save:hover{
+    opacity: 0.6;
+}

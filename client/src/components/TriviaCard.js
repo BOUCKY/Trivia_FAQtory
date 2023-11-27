@@ -11,8 +11,8 @@ function TriviaCard({id, round, song, question, answer, removeCard, setRound, se
         
     }
 
-    const trash = <FontAwesomeIcon icon={faTrashCan} style={{color: "#7e4c42",}} size='xs' />
-    const edit = <FontAwesomeIcon icon={faPenToSquare} style={{color: "#7e4c42",}} size='xs' />
+    const trash = <FontAwesomeIcon icon={faTrashCan} style={{color: "#204c73",}} size='s' />
+    const edit = <FontAwesomeIcon icon={faPenToSquare} style={{color: "#204c73",}} size='s' />
 
 
     const [editing, setEditing] = useState(false); // Add state for editing mode
@@ -86,7 +86,7 @@ function TriviaCard({id, round, song, question, answer, removeCard, setRound, se
                       onChange={e => setEditedAnswer(e.target.value)}
                     />
                     </label>
-                    <div className="buttons">
+                    <div className="edit-and-delete-buttons">
                         <button className='save'onClick={handleSave}>Save</button>
                         <button className='save'onClick={cancel}>Cancel</button>
                     </div>
@@ -97,9 +97,9 @@ function TriviaCard({id, round, song, question, answer, removeCard, setRound, se
                     <p className="trivia-card-title">Song: <p className="info">{song}</p></p>
                     <p className="trivia-card-title">Question: <p className="info">{question}</p></p>
                     <p className="trivia-card-title">Answer: <p className="info">{answer}</p></p>
-                    <div className="buttons">
-                        <button className='delete-button' onClick={handleDelete}>{trash}</button>
+                    <div className="edit-and-delete-buttons">
                         <button className='edit-button'onClick={handleEdit} >{edit}</button>
+                        <button className='delete-button' onClick={handleDelete}>{trash}</button>
                     </div>
                 </div>
                 )}
