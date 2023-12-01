@@ -73,7 +73,7 @@ function Home(){
 
     // Edit funcitons
     const updateQuestion = (cardId, newQuestion) => {
-        fetch(`/trivia/${cardId}`, {
+        fetch(`http://127.0.0.1:5555/trivia/${cardId}`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ question: newQuestion }),
@@ -95,7 +95,7 @@ function Home(){
     }
 
     const updateAnswer = (cardId, newAnswer) => {
-        fetch(`/trivia/${cardId}`, {
+        fetch(`http://127.0.0.1:5555/trivia/${cardId}`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ answer: newAnswer }),
@@ -117,7 +117,7 @@ function Home(){
     }
 
     const updateSong = (cardId, newSong) => {
-        fetch(`/trivia/${cardId}`, {
+        fetch(`http://127.0.0.1:5555/trivia/${cardId}`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ song: newSong }),
@@ -131,15 +131,15 @@ function Home(){
         .then(updatedCard => {
             setTrivia(prevTrivia =>
                 prevTrivia.map(card => (card.id === cardId ? { ...card, song: updatedCard.song } : card))
-            );
+            )
         })
         .catch(error => {
             console.error('There was an error updating the song:', error);
-        });
-    };
+        })
+    }
     
     const updateRound = (cardId, newRound) => {
-        fetch(`/trivia/${cardId}`, {
+        fetch(`http://127.0.0.1:5555/trivia/${cardId}`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ round: newRound }),
