@@ -92,6 +92,238 @@ function Player(){
 
     const filteredLetters = getFilteredLetters()
 
+    // Delete function
+    const removeCard = (id) => {
+        setPlayer((currentCard) => 
+            currentCard.filter((card) => card.id !== id)
+        )
+    }
+
+    // Edit funcitons
+    // QUESTIONS   
+    const updateQuestion1 = (cardId, newQuestion) => {
+        fetch(`http://127.0.0.1:5555/player/${cardId}`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ question: newQuestion }),
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok')
+            }
+            return response.json()
+        })
+        .then(updatedCard => {
+            setPlayer(prevTrivia =>
+                prevTrivia.map(card => (card.id === cardId ? { ...card, question1: updatedCard.question1 } : card))
+            )
+        })
+        .catch(error => {
+            console.error('There was an error updating the question:', error)
+        })
+    }
+
+    const updateQuestion2 = (cardId, newQuestion) => {
+        fetch(`http://127.0.0.1:5555/player/${cardId}`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ question: newQuestion }),
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok')
+            }
+            return response.json()
+        })
+        .then(updatedCard => {
+            setPlayer(prevTrivia =>
+                prevTrivia.map(card => (card.id === cardId ? { ...card, question2: updatedCard.question2 } : card))
+            )
+        })
+        .catch(error => {
+            console.error('There was an error updating the question:', error)
+        })
+    }
+
+    const updateQuestion3 = (cardId, newQuestion) => {
+        fetch(`http://127.0.0.1:5555/player/${cardId}`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ question: newQuestion }),
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok')
+            }
+            return response.json()
+        })
+        .then(updatedCard => {
+            setPlayer(prevTrivia =>
+                prevTrivia.map(card => (card.id === cardId ? { ...card, question3: updatedCard.question3 } : card))
+            )
+        })
+        .catch(error => {
+            console.error('There was an error updating the question:', error)
+        })
+    }
+
+    // ANSWERS
+    const updateAnswer1 = (cardId, newAnswer) => {
+        fetch(`http://127.0.0.1:5555/player/${cardId}`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ answer: newAnswer }),
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok')
+            }
+            return response.json()
+        })
+        .then(updatedCard => {
+            setPlayer(prevTrivia =>
+                prevTrivia.map(card => (card.id === cardId ? { ...card, answer1: updatedCard.answer1 } : card))
+            )
+        })
+        .catch(error => {
+            console.error('There was an error updating the answer:', error)
+        })
+    }
+
+    const updateAnswer2 = (cardId, newAnswer) => {
+        fetch(`http://127.0.0.1:5555/player/${cardId}`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ answer: newAnswer }),
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok')
+            }
+            return response.json()
+        })
+        .then(updatedCard => {
+            setPlayer(prevTrivia =>
+                prevTrivia.map(card => (card.id === cardId ? { ...card, answer2: updatedCard.answer2 } : card))
+            )
+        })
+        .catch(error => {
+            console.error('There was an error updating the answer:', error)
+        })
+    }
+
+    const updateAnswer3 = (cardId, newAnswer) => {
+        fetch(`http://127.0.0.1:5555/player/${cardId}`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ answer: newAnswer }),
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok')
+            }
+            return response.json()
+        })
+        .then(updatedCard => {
+            setPlayer(prevTrivia =>
+                prevTrivia.map(card => (card.id === cardId ? { ...card, answer3: updatedCard.answer3 } : card))
+            )
+        })
+        .catch(error => {
+            console.error('There was an error updating the answer:', error)
+        })
+    }
+
+    // SONGS
+    const updateSong1 = (cardId, newSong) => {
+        fetch(`http://127.0.0.1:5555/player/${cardId}`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ song: newSong }),
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(updatedCard => {
+            setPlayer(prevTrivia =>
+                prevTrivia.map(card => (card.id === cardId ? { ...card, song1: updatedCard.song1 } : card))
+            )
+        })
+        .catch(error => {
+            console.error('There was an error updating the song:', error);
+        })
+    }
+
+    const updateSong2 = (cardId, newSong) => {
+        fetch(`http://127.0.0.1:5555/player/${cardId}`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ song: newSong }),
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(updatedCard => {
+            setPlayer(prevTrivia =>
+                prevTrivia.map(card => (card.id === cardId ? { ...card, song2: updatedCard.song2 } : card))
+            )
+        })
+        .catch(error => {
+            console.error('There was an error updating the song:', error);
+        })
+    }
+
+    const updateSong3 = (cardId, newSong) => {
+        fetch(`http://127.0.0.1:5555/player/${cardId}`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ song: newSong }),
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(updatedCard => {
+            setPlayer(prevTrivia =>
+                prevTrivia.map(card => (card.id === cardId ? { ...card, song3: updatedCard.song3 } : card))
+            )
+        })
+        .catch(error => {
+            console.error('There was an error updating the song:', error);
+        })
+    }
+    
+    // THEME
+    const updateTheme = (cardId, newTheme) => {
+        fetch(`http://127.0.0.1:5555/player/${cardId}`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ theme: newTheme }),
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok')
+            }
+            return response.json()
+        })
+        .then(updatedCard => {
+            setPlayer(prevTrivia =>
+                prevTrivia.map(card => (card.id === cardId ? { ...card, theme: updatedCard.theme } : card))
+            )
+        })
+        .catch(error => {
+            console.error('There was an error updating the theme:', error)
+        })
+    }
+
 
     return(
         <div className="trivia-list">
@@ -120,6 +352,7 @@ function Player(){
                             {filterTriviaByLetterAndSearch(letter).sort((a, b) => a.theme.localeCompare(b.theme)).map(filtered_player => (
                                 <PlayerCard
                                     key={filtered_player.id}
+                                    id={filtered_player.id}
                                     theme={filtered_player.theme}
                                     song1={filtered_player.song1}
                                     question1={filtered_player.question1}
@@ -130,6 +363,17 @@ function Player(){
                                     song3={filtered_player.song3}
                                     question3={filtered_player.question3}
                                     answer3={filtered_player.answer3}
+                                    removeCard={removeCard}
+                                    setTheme={newTheme => updateTheme(filtered_player.id, newTheme)}
+                                    setSong1={newSong => updateSong1(filtered_player.id, newSong)}
+                                    setSong2={newSong => updateSong2(filtered_player.id, newSong)}
+                                    setSong3={newSong => updateSong3(filtered_player.id, newSong)}
+                                    setQuestion1={newQuestion => updateQuestion1(filtered_player.id, newQuestion)}
+                                    setQuestion2={newQuestion => updateQuestion2(filtered_player.id, newQuestion)}
+                                    setQuestion3={newQuestion => updateQuestion3(filtered_player.id, newQuestion)}
+                                    setAnswer1={newAnswer => updateAnswer1(filtered_player.id, newAnswer)}
+                                    setAnswer2={newAnswer => updateAnswer2(filtered_player.id, newAnswer)}
+                                    setAnswer3={newAnswer => updateAnswer3(filtered_player.id, newAnswer)}
                                 />
                             ))}
                         </div>
