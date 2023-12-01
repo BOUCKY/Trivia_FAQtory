@@ -33,20 +33,20 @@ function TriviaCard({id, round, song, question, answer, removeCard, setRound, se
         })
         .then(response => {
             if (!response.ok) {
-                throw new Error('Network response was not ok');
+                throw new Error('Network response was not ok')
             }
-            return response.json();
+            return response.json()
         })
         .then(updatedCard => {
-            setRound(updatedCard.round);
-            setSong(updatedCard.song);
-            setQuestion(updatedCard.question);
-            setAnswer(updatedCard.answer);
-            setEditing(false); // Exit editing mode after saving
+            setRound(updatedCard.round)
+            setSong(updatedCard.song)
+            setQuestion(updatedCard.question)
+            setAnswer(updatedCard.answer)
+            setEditing(false) // Exit editing mode after saving
         })
 
         .catch(error => {
-            console.error('There was an error updating the card:', error);
+            console.error('There was an error updating the card:', error)
         })
     }
     
