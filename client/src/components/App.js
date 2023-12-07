@@ -9,6 +9,7 @@ import Final from './Final'
 import '../styling/App.css'
 
 function App() {
+
   return (
     <div className="App">
       <Navbar />

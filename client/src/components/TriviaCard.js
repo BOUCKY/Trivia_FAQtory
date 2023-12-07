@@ -51,9 +51,9 @@ function TriviaCard({id, round, song, question, answer, removeCard, setRound, se
     }
     
   
-      const cancel = () =>{
+    const cancel = () =>{
           setEditing(false)
-      }
+    }
 
 
 

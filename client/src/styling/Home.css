@@ -1,26 +1,40 @@
 .trivia-list{
     width: 90%;
     margin-top: 125px;
-}
-
-.trivia-heading{
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     justify-content: center;
+}
+.test{
+    width: 90%;
+    margin-top: 125px;
+    display: flex;
     flex-direction: column;
     align-items: center;
-    align-content: center;
 }
 
+.logo-box{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
 .big-logo{
-    height: 300px;
+    height: 200px;
     margin: 30px 0px;
 }
 
 /* SEARCH BAR */
+.trivia-heading{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    align-content: center;
+}
 .trivia-search{
     display: flex;
-    width: 90%;
+    width: 50%;
     height: 40px;
 }
 .final-search{
@@ -32,7 +46,7 @@
 .search-select{
     font-family: inherit;
     font-size: 15px;
-    background-color: #4599c5;
+    background-color: #58c8fc;
     color: #ffff;
     padding-left: 10px;
     outline: none;
@@ -44,15 +58,42 @@
     font-family: inherit;
     width: 100%;
     padding-left: 10px;
-    color: #4599c5;
+    /* color: #4599c5; */
+    color: #58c8fc;
     outline: none;
     border: 1px solid #204c73;
     border-radius: 0px 10px 10px 0px;
 }
 ::placeholder{
-    color: #4599c5;
+    color: #58c8fc;
 }
 
+/* ADD BUTTONS */
+.add-questions{
+    font-family: inherit;
+    font-size: 15px;
+    background-color: #58c8fc;
+    color: #ffff;
+    padding-left: 10px;
+    border: 1px solid #204c73;
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+}
+.add-questions:hover{
+    opacity: 0.6;
+}
+.add-questions:active{
+    transform: translate(-1px, 2px);
+}
+
+/* THE FORM */
+.add-mode{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 /* THE CARDS */
 .letter-heading{

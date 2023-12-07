@@ -15,12 +15,6 @@ class Trivia(db.Model, SerializerMixin):
     question = db.Column(db.String)
     answer = db.Column(db.String)
 
-    #relationships
-
-
-    #serialize rules
-
-
 
 class Hidden(db.Model, SerializerMixin):
     __tablename__ = 'hidden_questions'
@@ -43,13 +37,6 @@ class Hidden(db.Model, SerializerMixin):
     answer5 = db.Column(db.String)
     question5 = db.Column(db.String)
 
-    #relationships
-
-
-    #serialize rules
-
-
-
 class Player(db.Model, SerializerMixin):
     __tablename__ = 'player_questions'
 
@@ -65,26 +52,12 @@ class Player(db.Model, SerializerMixin):
     answer3 = db.Column(db.String)
     question3 = db.Column(db.String)
 
-    #relationships
-
-
-    #serialize rules
-
-
-
 class Final(db.Model, SerializerMixin):
     __tablename__ = 'final_questions'
 
     id = db.Column(db.Integer, primary_key=True)
     answer = db.Column(db.String)
     question = db.Column(db.String)
-
-    #relationships
-
-
-    #serialize rules
-
-
 
 # class Game(db.Model, SerializerMixin):
 #     __tablename__ = 'games'
