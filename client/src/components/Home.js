@@ -176,9 +176,6 @@ function Home(){
     return(
         click ? 
         (<div className="test">
-            {/* <div className="add">
-                    <button className="add-questions" onClick={handleAddQuestion}>Go Back</button>
-            </div> */}
             <TriviaForm addNewTrivia={addNewTrivia} handleAddQuestion={handleAddQuestion} />
         </div>) 
         :

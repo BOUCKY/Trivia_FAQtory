@@ -50,55 +50,60 @@ function TriviaForm({addNewTrivia, handleAddQuestion}){
 
     return(
         <div className="add-mode">
-            <label htmlFor="letter">Letter:
-                <input
-                    onChange={(e) => {setFormData({...formData, letter: e.target.value})}}
-                    type='text'
-                    placeholder="Letter . . ."
-                    className="input-text"
-                    value={formData.letter}
-                />
-            </label>
-            <label htmlFor="round">Round:
-                <input
-                    onChange={(e) => {setFormData({...formData, round: e.target.value})}}
-                    type='text'
-                    placeholder="Round . . ."
-                    className="input-text"
-                    value={formData.round}
-                />
-            </label>
-            <label htmlFor="song">Song:
-                <input
-                    onChange={(e) => {setFormData({...formData, song: e.target.value})}}
-                    type='text'
-                    placeholder="Song . . ."
-                    className="input-text"
-                    value={formData.song}
-                />
-            </label>
-            <label htmlFor="question">Question:
-                <textarea
-                    onChange={(e) => {setFormData({...formData, question: e.target.value})}}
-                    type='text'
-                    placeholder="Question . . ."
-                    className="input-text"
-                    value={formData.question}
-                />
-            </label>
-            <label htmlFor="answer">Answer:
-                <textarea
-                    onChange={(e) => {setFormData({...formData, answer: e.target.value})}}
-                    type='text'
-                    placeholder="Answer . . ."
-                    className="input-text"
-                    value={formData.answer}
-                />
-            </label>
-            <div className="submit-and-cancel-buttons">
-                <button className='save'onClick={handleSubmit}>Save</button>
-                <button className='save'onClick={cancel}>Cancel</button>
-            </div>
+            <div className="form-box">
+                <div className="form-heading">
+                    <p>Add A Trivia Question!</p>
+                </div>
+                <label htmlFor="letter">Letter:
+                    <input
+                        onChange={(e) => {setFormData({...formData, letter: e.target.value})}}
+                        type='text'
+                        placeholder=". . ."
+                        className="input-text"
+                        value={formData.letter}
+                    />
+                </label>
+                <label htmlFor="round">Round:
+                    <input
+                        onChange={(e) => {setFormData({...formData, round: e.target.value})}}
+                        type='text'
+                        placeholder=". . ."
+                        className="input-text"
+                        value={formData.round}
+                    />
+                </label>
+                <label htmlFor="song">Song:
+                    <input
+                        onChange={(e) => {setFormData({...formData, song: e.target.value})}}
+                        type='text'
+                        placeholder=". . ."
+                        className="input-text"
+                        value={formData.song}
+                    />
+                </label>
+                <label htmlFor="question">Question:
+                    <textarea
+                        onChange={(e) => {setFormData({...formData, question: e.target.value})}}
+                        type='text'
+                        placeholder=". . ."
+                        className="input-text"
+                        value={formData.question}
+                    />
+                </label>
+                <label htmlFor="answer">Answer:
+                    <textarea
+                        onChange={(e) => {setFormData({...formData, answer: e.target.value})}}
+                        type='text'
+                        placeholder=". . ."
+                        className="input-text"
+                        value={formData.answer}
+                    />
+                </label>
+                <div className="submit-and-cancel-buttons">
+                    <button className='save'onClick={handleSubmit}>Save</button>
+                    <button className='save'onClick={cancel}>Cancel</button>
+                </div>
+                </div>
         </div>
     )
 }

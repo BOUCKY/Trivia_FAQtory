@@ -1,5 +1,6 @@
 import React, {useState, useEffect}from "react"
 import HiddenCard from './HiddenCard'
+import HiddenForm from "./HiddenForm"
 import '../styling/Home.css'
 import Logo from '../logo.png'
 
@@ -16,6 +17,7 @@ function Hidden(){
     const [hidden, setHidden] = useState([])
     const [search, setSearch] = useState('')
     const [selectedFilter, setSelectedFilter] = useState('letter')
+    const [click, setClick] = useState(false)
 
     // -----FETCH REQUESTS-----
     useEffect(() => {
@@ -442,12 +444,28 @@ function Hidden(){
         })
     }
 
+    // Add A Question Button Functionality
+    const handleAddQuestion = () => {
+        setClick(prevClick => !prevClick)
+    }
+
+    const addNewHidden = (newHidden) => {
+        setHidden([...hidden, newHidden])
+    }
+
 
 
     return(
-        <div className="trivia-list">
-            <div className="trivia-heading">
+        click ? 
+        (<div className="test">
+            <HiddenForm addNewHidden={addNewHidden} handleAddQuestion={handleAddQuestion} />
+        </div>) 
+        :
+        (<div className="trivia-list">
+            <div className="logo-box">
                 <img className="big-logo" src={Logo} alt='Logo' />
+            </div>
+            <div className="trivia-heading">
                 <div className="trivia-search">
                     <select className="search-select"value={selectedFilter} onChange={handleFilterChange}>
                         <option value="letter">Search By: Letter</option>
@@ -462,6 +480,9 @@ function Hidden(){
                         value={search}
                         onChange={handleSearchChange}
                     />
+                </div>
+                <div className="add">
+                    <button className="add-questions" onClick={handleAddQuestion}>Add A Question</button>
                 </div>
             </div>
             <div className="trivia-body">
@@ -511,7 +532,7 @@ function Hidden(){
                     )
                 ))}
             </div>
-        </div>
+        </div>)
     )
 }
 
