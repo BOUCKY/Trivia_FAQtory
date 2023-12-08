@@ -1,0 +1,83 @@
+import React, {useState}from "react"
+
+function FinalForm({addNewTrivia, handleAddQuestion}){
+
+    const [formData, setFormData] = useState({question:'', answer:''})
+    // eslint-disable-next-line
+    const [adding, setAdding] = useState(true)
+
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        fetch(`http://127.0.0.1:5555/final`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({...formData, }),
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok')
+                }
+                return response.json()
+            })
+            
+            .then(data => {
+                // Handle the data or provide feedback to the user if needed
+                console.log('Data saved successfully:', data)
+            })
+
+            .then(newTrivia => addNewTrivia(newTrivia))
+                resetForm()
+                setAdding(false)
+
+            .catch(error => {
+                console.error('There was an error updating the card:', error)
+                // Provide feedback to the user about the error if needed
+            })
+    }
+
+    const resetForm = () => {
+        setFormData({ question: '', answer: '' });
+    }
+
+    const cancel = () =>{
+        resetForm()
+        setAdding(false)
+        handleAddQuestion()
+    }
+
+
+    return(
+        <div className="add-mode">
+            <div className="form-box">
+                <div className="form-heading">
+                    <p>Add A Final Wager Question!</p>
+                </div>
+                <label htmlFor="question">Question:
+                    <textarea
+                        onChange={(e) => {setFormData({...formData, question: e.target.value})}}
+                        type='text'
+                        placeholder=". . ."
+                        className="input-text"
+                        value={formData.question}
+                    />
+                </label>
+                <label htmlFor="answer">Answer:
+                    <textarea
+                        onChange={(e) => {setFormData({...formData, answer: e.target.value})}}
+                        type='text'
+                        placeholder=". . ."
+                        className="input-text"
+                        value={formData.answer}
+                    />
+                </label>
+                <div className="submit-and-cancel-buttons">
+                    <button className='save'onClick={handleSubmit}>Save</button>
+                    <button className='save'onClick={cancel}>Cancel</button>
+                </div>
+                </div>
+        </div>
+    )
+}
+
+export default FinalForm

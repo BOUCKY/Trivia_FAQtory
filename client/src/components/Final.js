@@ -1,5 +1,6 @@
 import React, {useState, useEffect}from "react"
 import FinalCard from './FinalCard'
+import FinalForm from "./FinalForm"
 import '../styling/Home.css'
 import Logo from '../logo.png'
 
@@ -14,6 +15,7 @@ function Final(){
     const [trivia, setTrivia] = useState([])
     const [search, setSearch] = useState('')
     const [selectedFilter, setSelectedFilter] = useState('question')
+    const [click, setClick] = useState(false)
 
     // -----FETCH REQUESTS-----
     useEffect(() => {
@@ -91,38 +93,58 @@ function Final(){
         })
     }
 
+        // Add A Question Button Functionality
+        const handleAddQuestion = () => {
+            setClick(prevClick => !prevClick)
+        }
+    
+        const addNewTrivia = (newTrivia) => {
+            setTrivia([...trivia, newTrivia])
+        }
+
     return(
-        <div className="trivia-list">
-            <div className="trivia-heading">
-                <img className="big-logo" src={Logo} alt='Logo' />
-                <div className="final-search">
-                    <select className="search-select"value={selectedFilter} onChange={handleFilterChange}>
-                        <option value="question">Search By: Question</option>
-                        <option value="answer">Search By: Answer</option>
-                    </select>
-                    <input
-                        className="search-input"
-                        type="text"
-                        placeholder={`Search by ${selectedFilter}`}
-                        value={search}
-                        onChange={handleSearchChange}
-                    />
+        click ? 
+        (<div className="test">
+            <FinalForm addNewTrivia={addNewTrivia} handleAddQuestion={handleAddQuestion} />
+        </div>) 
+        :(
+            <div className="trivia-list">
+                 <div className="logo-box">
+                    <img className="big-logo" src={Logo} alt='Logo' />
+                </div>
+                <div className="final-heading">
+                    <div className="final-search">
+                        <select className="search-select"value={selectedFilter} onChange={handleFilterChange}>
+                            <option value="question">Search By: Question</option>
+                            <option value="answer">Search By: Answer</option>
+                        </select>
+                        <input
+                            className="search-input"
+                            type="text"
+                            placeholder={`Search by ${selectedFilter}`}
+                            value={search}
+                            onChange={handleSearchChange}
+                        />
+                    </div>
+                    <div className="add">
+                        <button className="add-questions" onClick={handleAddQuestion}>Add A Question</button>
+                    </div>
+                </div>
+                <div className="trivia-body">
+                    {filteredFinal.map(filtered_trivia => (
+                        <FinalCard
+                            key={filtered_trivia.id}
+                            id={filtered_trivia.id}
+                            question={filtered_trivia.question}
+                            answer={filtered_trivia.answer}
+                            setQuestion={newQuestion => updateQuestion(filtered_trivia.id, newQuestion)}
+                            setAnswer={newAnswer => updateAnswer(filtered_trivia.id, newAnswer)}
+                            removeCard={removeCard}
+                        />
+                    ))}
                 </div>
             </div>
-            <div className="trivia-body">
-                {filteredFinal.map(filtered_trivia => (
-                    <FinalCard
-                        key={filtered_trivia.id}
-                        id={filtered_trivia.id}
-                        question={filtered_trivia.question}
-                        answer={filtered_trivia.answer}
-                        setQuestion={newQuestion => updateQuestion(filtered_trivia.id, newQuestion)}
-                        setAnswer={newAnswer => updateAnswer(filtered_trivia.id, newAnswer)}
-                        removeCard={removeCard}
-                    />
-                ))}
-            </div>
-        </div>
+        )
     )
 
 }
