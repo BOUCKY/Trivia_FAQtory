@@ -1,5 +1,6 @@
 import React, {useState, useEffect}from "react"
 import PlayerCard from "./PlayerCard"
+import PlayerForm from "./PlayerForm"
 import '../styling/Home.css'
 import Logo from '../logo.png'
 
@@ -16,6 +17,8 @@ function Player(){
     const [player, setPlayer] = useState([])
     const [search, setSearch] = useState('')
     const [selectedFilter, setSelectedFilter] = useState('theme')
+    const [click, setClick] = useState(false)
+
 
     // -----FETCH REQUESTS-----
     useEffect(() => {
@@ -324,11 +327,27 @@ function Player(){
         })
     }
 
+    // Add A Question Button Functionality
+    const handleAddQuestion = () => {
+        setClick(prevClick => !prevClick)
+    }
+
+    const addNewPlayer = (newPlayer) => {
+        setPlayer([...player, newPlayer])
+    }
+
 
     return(
-        <div className="trivia-list">
-            <div className="trivia-heading">
+        click ? 
+        (<div className="test">
+            <PlayerForm addNewPlayer={addNewPlayer} handleAddQuestion={handleAddQuestion} />
+        </div>) 
+        :
+        (<div className="trivia-list">
+            <div className="logo-box">
                 <img className="big-logo" src={Logo} alt='Logo' />
+            </div>
+            <div className="trivia-heading">
                 <div className="trivia-search">
                     <select className="search-select"value={selectedFilter} onChange={handleFilterChange}>
                         <option value="theme">Search By: Theme</option>
@@ -342,6 +361,9 @@ function Player(){
                         value={search}
                         onChange={handleSearchChange}
                     />
+                </div>
+                <div className="add">
+                    <button className="add-questions" onClick={handleAddQuestion}>Add A Question</button>
                 </div>
             </div>
             <div className="trivia-body">
@@ -380,7 +402,7 @@ function Player(){
                     )
                 ))}
             </div>
-        </div>
+        </div>)
     )
 }
 
