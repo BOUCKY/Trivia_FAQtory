@@ -59,8 +59,15 @@ class Final(db.Model, SerializerMixin):
     answer = db.Column(db.String)
     question = db.Column(db.String)
 
-# class Game(db.Model, SerializerMixin):
-#     __tablename__ = 'games'
+class Game(db.Model, SerializerMixin):
+    __tablename__ = 'games'
 
-#     id = db.Column(db.Integer, primary_key=True)
-#     trivia_id = db.Column(db.Integer, db.ForeignKey('trivia_questions.id'), nullable=False)
+    id = db.Column(db.Integer, primary_key=True)
+    letter = db.Column(db.String)
+    round1 = db.Column(db.String)
+    round2 = db.Column(db.String)
+    hidden_round = db.Column(db.String)
+    player_round = db.Column(db.String)
+    round3 = db.Column(db.String)
+    round4 = db.Column(db.String)
+    final_wager = db.Column(db.String)

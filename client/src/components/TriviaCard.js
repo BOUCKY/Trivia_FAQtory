@@ -92,7 +92,7 @@ function TriviaCard({id, round, song, question, answer, removeCard, setRound, se
                     </div>
                   </div>
                 ):(
-                    <div className="trivia-card-content">
+                <div className="trivia-card-content">
                     <p className="trivia-card-round">{round}</p>
                     <p className="trivia-card-title">Song: <p className="info">{song}</p></p>
                     <p className="trivia-card-title">Question: <p className="info">{question}</p></p>

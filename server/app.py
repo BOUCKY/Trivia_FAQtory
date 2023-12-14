@@ -9,7 +9,7 @@ from flask_restful import Resource
 # Local imports
 from config import app, db, api
 # Add your model imports
-from models import Trivia, Hidden, Player, Final
+from models import Trivia, Hidden, Player, Final, Game
 
 # Views go here!
 
@@ -249,7 +249,49 @@ def final_id(id):
         db.session.commit()
         return make_response({'message':'Successfully deleted the final question.'},204)
 
-
+# GAMES
+@app.route('/game', methods=['GET', 'POST'])
+def game():
+    if request.method == 'GET':
+        quesitons = [q.to_dict() for q in Game.query.all()]
+        return make_response(quesitons, 200)
+    
+    if request.method == 'POST':
+        data = request.get_json()
+        try:
+            new_game = Game(
+                letter = data['letter'],
+                round1 = data['round1'],
+                round2 = data['round2'],
+                round3 = data['round3'],
+                round4 = data['round4'],
+                hidden_theme = data['hidden_theme'],
+                player_chosen = data['player_chosen'],
+                final_wager = data['final_wager'],
+            )
+            db.session.add(new_game)
+            db.session.commit()
+            return make_response(new_game.to_dict(),201)
+        except ValueError as v_error:
+            return make_response({'errors':[v_error]},400)
+        
+@app.route('/game/<int:id>', methods=['GET', 'DELETE'])
+def game_id(id):
+    game = Game.query.filter(Game.id == id).first()
+        
+    if request.method == 'GET':
+        if game:
+            return make_response(game.to_dict(), 200)
+        else:
+            return make_response({'error': 'Game not found.'}, 404)
+    
+    if request.method == 'DELETE':
+        if game == None:
+            return make_response({'error': 'Game not found.'}, 404)
+        
+        db.session.delete(game)
+        db.session.commit()
+        return make_response({'message':'Successfully deleted the Game.'},204)
     
 if __name__ == '__main__':
     app.run(port=5555, debug=True)
