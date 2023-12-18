@@ -2,6 +2,7 @@
   "dependencies": {
     "copy-to-clipboard": "^3.3.3",
     "react-copy-to-clipboard": "^5.1.0",
+    "react-to-print": "^2.14.15",
     "react-toastify": "^9.1.3"
   }
 }

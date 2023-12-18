@@ -1,7 +1,9 @@
 import React, { useState } from "react"
 import {CopyToClipboard} from 'react-copy-to-clipboard'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faPenToSquare, faTrashCan, faCopy, faSquareCheck } from '@fortawesome/free-regular-svg-icons'
+import { faPenToSquare, faTrashCan, faCopy } from '@fortawesome/free-regular-svg-icons'
+import { faCheck } from '@fortawesome/free-solid-svg-icons'
+
 
 function HiddenCard({id, theme, song1, song2, song3, song4, question1, answer1, question2, answer2, question3, answer3, question4, answer4, question5, answer5, removeCard, setTheme, setSong1, setSong2, setSong3, setSong4, setQuestion1, setQuestion2, setQuestion3, setQuestion4, setQuestion5, setAnswer1, setAnswer2, setAnswer3, setAnswer4, setAnswer5}){
 
@@ -15,7 +17,7 @@ function HiddenCard({id, theme, song1, song2, song3, song4, question1, answer1, 
     const trash = <FontAwesomeIcon icon={faTrashCan} style={{color: "#204c73",}} size='sm' />
     const edit = <FontAwesomeIcon icon={faPenToSquare} style={{color: "#204c73",}} size='sm' />
     const copy = <FontAwesomeIcon icon={faCopy} style={{color: "#204c73",}} size='sm' />
-    const check = <FontAwesomeIcon icon={faSquareCheck} style={{color: "#204c73",}} size='sm' />
+    const check = <FontAwesomeIcon icon={faCheck} style={{color: "#204c73",}} size='sm' />
 
     const cardText =  `Round: ${theme}\nSongs: ${song1}${song2}${song3}${song4}\nQuestion: ${question1}\nAnswer: ${answer1}}\nQuestion: ${question2}\nAnswer: ${answer2}\nQuestion: ${question3}\nAnswer: ${answer3}\nQuestion: ${question4}\nAnswer: ${answer4}\nQuestion: ${question5}\nAnswer: ${answer5}`
 

@@ -58,63 +58,63 @@ function GameForm({addNewGame, handleAddQuestion}){
                     />
                 </label>
                 <label htmlFor="round">Round 1:
-                    <input
+                    <textarea
                         onChange={(e) => {setFormData({...formData, round1: e.target.value})}}
-                        type='textarea'
+                        type='text'
                         placeholder=". . ."
                         className="input-text"
                         value={formData.round1}
                     />
                 </label>
                 <label htmlFor="round">Round 2:
-                    <input
+                    <textarea
                         onChange={(e) => {setFormData({...formData, round2: e.target.value})}}
-                        type='textarea'
+                        type='text'
                         placeholder=". . ."
                         className="input-text"
                         value={formData.round2}
                     />
                 </label>
                 <label htmlFor="round">Hidden Theme Round:
-                    <input
+                    <textarea
                         onChange={(e) => {setFormData({...formData, hidden_round: e.target.value})}}
-                        type='textarea'
+                        type='text'
                         placeholder=". . ."
                         className="input-text"
                         value={formData.hidden_round}
                     />
                 </label>
                 <label htmlFor="round">Player Chosen Round:
-                    <input
+                    <textarea
                         onChange={(e) => {setFormData({...formData, player_round: e.target.value})}}
-                        type='textarea'
+                        type='text'
                         placeholder=". . ."
                         className="input-text"
                         value={formData.player_round}
                     />
                 </label>
                 <label htmlFor="round">Round 3:
-                    <input
+                    <textarea
                         onChange={(e) => {setFormData({...formData, round3: e.target.value})}}
-                        type='textarea'
+                        type='text'
                         placeholder=". . ."
                         className="input-text"
                         value={formData.round3}
                     />
                 </label>
                 <label htmlFor="round">Round 4:
-                    <input
+                    <textarea
                         onChange={(e) => {setFormData({...formData, round4: e.target.value})}}
-                        type='textarea'
+                        type='text'
                         placeholder=". . ."
                         className="input-text"
                         value={formData.round4}
                     />
                 </label>
                 <label htmlFor="round">Final Wager Question:
-                    <input
+                    <textarea
                         onChange={(e) => {setFormData({...formData, final_wager: e.target.value})}}
-                        type='textarea'
+                        type='text'
                         placeholder=". . ."
                         className="input-text"
                         value={formData.final_wager}

@@ -1,7 +1,9 @@
 import React, { useState } from "react"
 import {CopyToClipboard} from 'react-copy-to-clipboard'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faPenToSquare, faTrashCan, faCopy, faSquareCheck } from '@fortawesome/free-regular-svg-icons'
+import { faPenToSquare, faTrashCan, faCopy } from '@fortawesome/free-regular-svg-icons'
+import { faCheck } from '@fortawesome/free-solid-svg-icons'
+
 
 function PlayerCard({id, theme, song1, question1, answer1, song2, question2, answer2, song3, question3, answer3, removeCard, setTheme, setSong1, setSong2, setSong3, setQuestion1, setQuestion2, setQuestion3, setAnswer1, setAnswer2, setAnswer3}){
 
@@ -15,7 +17,7 @@ function PlayerCard({id, theme, song1, question1, answer1, song2, question2, ans
       const trash = <FontAwesomeIcon icon={faTrashCan} style={{color: "#204c73",}} size='sm' />
       const edit = <FontAwesomeIcon icon={faPenToSquare} style={{color: "#204c73",}} size='sm' />
       const copy = <FontAwesomeIcon icon={faCopy} style={{color: "#204c73",}} size='sm' />
-      const check = <FontAwesomeIcon icon={faSquareCheck} style={{color: "#204c73",}} size='sm' />
+      const check = <FontAwesomeIcon icon={faCheck} style={{color: "#204c73",}} size='sm' />
 
       const cardText =  `Round: ${theme}\nSong: ${song1}\nQuestion: ${question1}\nAnswer: ${answer1}\nSong: ${song2}\nQuestion: ${question2}\nAnswer: ${answer2}\nSong: ${song3}\nQuestion: ${question3}\nAnswer: ${answer3}`
 

@@ -192,6 +192,15 @@
 .copy-button:hover{
     opacity: 0.6;
 }
+.print-button{
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 18px;
+}
+.print-button:hover{
+    opacity: 0.6;
+}
 
 /* EDIT MODE / FORM */
 .edit-mode{

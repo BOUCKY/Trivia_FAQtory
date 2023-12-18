@@ -1,7 +1,8 @@
 import React, { useState } from "react"
 import {CopyToClipboard} from 'react-copy-to-clipboard'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faPenToSquare, faTrashCan, faCopy, faSquareCheck } from '@fortawesome/free-regular-svg-icons'
+import { faPenToSquare, faTrashCan, faCopy } from '@fortawesome/free-regular-svg-icons'
+import { faCheck } from '@fortawesome/free-solid-svg-icons'
 
 function FinalCard({id, question, answer, removeCard, setQuestion, setAnswer}){
 
@@ -15,7 +16,7 @@ function FinalCard({id, question, answer, removeCard, setQuestion, setAnswer}){
     const trash = <FontAwesomeIcon icon={faTrashCan} style={{color: "#204c73",}} size='sm' />
     const edit = <FontAwesomeIcon icon={faPenToSquare} style={{color: "#204c73",}} size='sm' />
     const copy = <FontAwesomeIcon icon={faCopy} style={{color: "#204c73",}} size='sm' />
-    const check = <FontAwesomeIcon icon={faSquareCheck} style={{color: "#204c73",}} size='sm' />
+    const check = <FontAwesomeIcon icon={faCheck} style={{color: "#204c73",}} size='sm' />
 
     const cardText =  `Question: ${question}\nAnswer: ${answer}`
 
