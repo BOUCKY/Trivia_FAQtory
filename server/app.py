@@ -265,8 +265,8 @@ def game():
                 round2 = data['round2'],
                 round3 = data['round3'],
                 round4 = data['round4'],
-                hidden_theme = data['hidden_theme'],
-                player_chosen = data['player_chosen'],
+                hidden_round = data['hidden_round'],
+                player_round = data['player_round'],
                 final_wager = data['final_wager'],
             )
             db.session.add(new_game)

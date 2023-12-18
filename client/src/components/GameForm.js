@@ -29,10 +29,6 @@ function GameForm({addNewGame, handleAddQuestion}){
                 resetForm()
                 setAdding(false)
 
-            .catch(error => {
-                console.error('There was an error updating the card:', error)
-                // Provide feedback to the user about the error if needed
-            })
     }
 
     const resetForm = () => {
