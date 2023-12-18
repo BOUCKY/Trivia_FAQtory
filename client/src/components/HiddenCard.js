@@ -1,6 +1,7 @@
 import React, { useState } from "react"
+import {CopyToClipboard} from 'react-copy-to-clipboard'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faPenToSquare, faTrashCan } from '@fortawesome/free-regular-svg-icons'
+import { faPenToSquare, faTrashCan, faCopy, faSquareCheck } from '@fortawesome/free-regular-svg-icons'
 
 function HiddenCard({id, theme, song1, song2, song3, song4, question1, answer1, question2, answer2, question3, answer3, question4, answer4, question5, answer5, removeCard, setTheme, setSong1, setSong2, setSong3, setSong4, setQuestion1, setQuestion2, setQuestion3, setQuestion4, setQuestion5, setAnswer1, setAnswer2, setAnswer3, setAnswer4, setAnswer5}){
 
@@ -13,6 +14,10 @@ function HiddenCard({id, theme, song1, song2, song3, song4, question1, answer1, 
 
     const trash = <FontAwesomeIcon icon={faTrashCan} style={{color: "#204c73",}} size='sm' />
     const edit = <FontAwesomeIcon icon={faPenToSquare} style={{color: "#204c73",}} size='sm' />
+    const copy = <FontAwesomeIcon icon={faCopy} style={{color: "#204c73",}} size='sm' />
+    const check = <FontAwesomeIcon icon={faSquareCheck} style={{color: "#204c73",}} size='sm' />
+
+    const cardText =  `Round: ${theme}\nSongs: ${song1}${song2}${song3}${song4}\nQuestion: ${question1}\nAnswer: ${answer1}}\nQuestion: ${question2}\nAnswer: ${answer2}\nQuestion: ${question3}\nAnswer: ${answer3}\nQuestion: ${question4}\nAnswer: ${answer4}\nQuestion: ${question5}\nAnswer: ${answer5}`
 
 
     const [editing, setEditing] = useState(false); // Add state for editing mode
@@ -31,6 +36,8 @@ function HiddenCard({id, theme, song1, song2, song3, song4, question1, answer1, 
     const [editedAnswer4, setEditedAnswer4] = useState(answer4)
     const [editedQuestion5, setEditedQuestion5] = useState(question5)
     const [editedAnswer5, setEditedAnswer5] = useState(answer5)
+    // eslint-disable-next-line
+    const [copied, setCopied] = useState(false)
   
     const handleEdit = () => {
       setEditing(true)
@@ -77,6 +84,14 @@ function HiddenCard({id, theme, song1, song2, song3, song4, question1, answer1, 
       const cancel = () =>{
           setEditing(false)
       }
+
+      const handleCopy = () => {
+        setCopied(true)
+        setTimeout(() => {
+            setCopied(false)
+        }, 2000)
+    }
+
 
     return(
         <div className="trivia-card-container">
@@ -193,6 +208,9 @@ function HiddenCard({id, theme, song1, song2, song3, song4, question1, answer1, 
                     <p className="trivia-card-title">Question: <p className="info">{question5}</p></p>
                     <p className="trivia-card-title">Answer: <p className="info">{answer5}</p></p>
                     <div className="edit-and-delete-buttons">
+                        <CopyToClipboard text={cardText}>
+                            <button className="copy-button" onClick={handleCopy}>{copied ? check : copy}</button>
+                        </CopyToClipboard>
                         <button className='edit-button'onClick={handleEdit} >{edit}</button>
                         <button className='delete-button' onClick={handleDelete}>{trash}</button>
                     </div>

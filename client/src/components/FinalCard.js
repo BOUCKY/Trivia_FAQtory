@@ -1,6 +1,7 @@
 import React, { useState } from "react"
+import {CopyToClipboard} from 'react-copy-to-clipboard'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faPenToSquare, faTrashCan } from '@fortawesome/free-regular-svg-icons'
+import { faPenToSquare, faTrashCan, faCopy, faSquareCheck } from '@fortawesome/free-regular-svg-icons'
 
 function FinalCard({id, question, answer, removeCard, setQuestion, setAnswer}){
 
@@ -13,11 +14,17 @@ function FinalCard({id, question, answer, removeCard, setQuestion, setAnswer}){
 
     const trash = <FontAwesomeIcon icon={faTrashCan} style={{color: "#204c73",}} size='sm' />
     const edit = <FontAwesomeIcon icon={faPenToSquare} style={{color: "#204c73",}} size='sm' />
+    const copy = <FontAwesomeIcon icon={faCopy} style={{color: "#204c73",}} size='sm' />
+    const check = <FontAwesomeIcon icon={faSquareCheck} style={{color: "#204c73",}} size='sm' />
+
+    const cardText =  `Question: ${question}\nAnswer: ${answer}`
 
 
     const [editing, setEditing] = useState(false); // Add state for editing mode
     const [editedQuestion, setEditedQuestion] = useState(question)
     const [editedAnswer, setEditedAnswer] = useState(answer)
+    // eslint-disable-next-line
+    const [copied, setCopied] = useState(false)
   
     const handleEdit = () => {
       setEditing(true)
@@ -51,6 +58,14 @@ function FinalCard({id, question, answer, removeCard, setQuestion, setAnswer}){
           setEditing(false)
       }
 
+      const handleCopy = () => {
+        setCopied(true)
+        setTimeout(() => {
+            setCopied(false)
+        }, 2000)
+    }
+
+
     return(
         <div className="trivia-card-container">
             <div className="trivia-card">
@@ -78,6 +93,9 @@ function FinalCard({id, question, answer, removeCard, setQuestion, setAnswer}){
                     <p className="trivia-card-title">Question: <p className="info">{question}</p></p>
                     <p className="trivia-card-title">Answer: <p className="info">{answer}</p></p>
                     <div className="edit-and-delete-buttons">
+                        <CopyToClipboard text={cardText}>
+                            <button className="copy-button" onClick={handleCopy}>{copied ? check : copy}</button>
+                        </CopyToClipboard>
                         <button className='edit-button'onClick={handleEdit} >{edit}</button>
                         <button className='delete-button' onClick={handleDelete}>{trash}</button>
                     </div>

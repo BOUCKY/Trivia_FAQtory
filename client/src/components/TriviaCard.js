@@ -1,6 +1,7 @@
 import React, {useState} from "react"
+import {CopyToClipboard} from 'react-copy-to-clipboard'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faPenToSquare, faTrashCan } from '@fortawesome/free-regular-svg-icons'
+import { faPenToSquare, faTrashCan, faCopy, faSquareCheck } from '@fortawesome/free-regular-svg-icons'
 
 function TriviaCard({id, round, song, question, answer, removeCard, setRound, setSong, setQuestion, setAnswer}){
 
@@ -13,6 +14,10 @@ function TriviaCard({id, round, song, question, answer, removeCard, setRound, se
 
     const trash = <FontAwesomeIcon icon={faTrashCan} style={{color: "#204c73",}} size='sm' />
     const edit = <FontAwesomeIcon icon={faPenToSquare} style={{color: "#204c73",}} size='sm' />
+    const copy = <FontAwesomeIcon icon={faCopy} style={{color: "#204c73",}} size='sm' />
+    const check = <FontAwesomeIcon icon={faSquareCheck} style={{color: "#204c73",}} size='sm' />
+
+    const cardText =  `Song: ${song}\nQuestion: ${question}\nAnswer: ${answer}`;
 
 
     const [editing, setEditing] = useState(false); // Add state for editing mode
@@ -20,6 +25,8 @@ function TriviaCard({id, round, song, question, answer, removeCard, setRound, se
     const [editedAnswer, setEditedAnswer] = useState(answer)
     const [editedSong, setEditedSong] = useState(song)
     const [editedRound, setEditedRound] = useState(round)
+    // eslint-disable-next-line
+    const [copied, setCopied] = useState(false)
   
     const handleEdit = () => {
       setEditing(true);
@@ -53,6 +60,13 @@ function TriviaCard({id, round, song, question, answer, removeCard, setRound, se
   
     const cancel = () =>{
           setEditing(false)
+    }
+
+    const handleCopy = () => {
+        setCopied(true)
+        setTimeout(() => {
+            setCopied(false)
+        }, 2000)
     }
 
 
@@ -98,6 +112,9 @@ function TriviaCard({id, round, song, question, answer, removeCard, setRound, se
                     <p className="trivia-card-title">Question: <p className="info">{question}</p></p>
                     <p className="trivia-card-title">Answer: <p className="info">{answer}</p></p>
                     <div className="edit-and-delete-buttons">
+                        <CopyToClipboard text={cardText}>
+                            <button className="copy-button" onClick={handleCopy}>{copied ? check : copy}</button>
+                        </CopyToClipboard>
                         <button className='edit-button'onClick={handleEdit} >{edit}</button>
                         <button className='delete-button' onClick={handleDelete}>{trash}</button>
                     </div>
