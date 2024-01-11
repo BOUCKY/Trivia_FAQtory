@@ -20,6 +20,12 @@ function Navbar(){
         setNavClick(!navClick)
     }
 
+    // Open tab in a new window
+    const openInNewTab = (url) => {
+        const newWindow = window.open(url, '_blank', 'noopener,noreferrer');
+        if (newWindow) newWindow.opener = null;
+    }
+
     return(
         <div className="header">
             <div className="left-side-nav">
@@ -33,7 +39,7 @@ function Navbar(){
             </div>
             <div className={`nav-bar ${navClick ? 'active' : ''}`}>
                 <li className="nav-bar-list"><NavLink className={`nav-bar-link ${currentTab === "/" ? 'underline' : ''}`} onClick={() => {handleNavClick(); handleTab('/');}} to="/">Home</NavLink></li>
-                <li className="nav-bar-list"><NavLink className={`nav-bar-link ${currentTab === "games" ? 'underline' : ''}`} onClick={() => {handleNavClick(); handleTab('games');}} to="games">Games</NavLink></li>
+                <li className="nav-bar-list"><NavLink className={`nav-bar-link ${currentTab === "games" ? 'underline' : ''}`} onClick={() => {handleNavClick(); handleTab('games'); openInNewTab('/games'); }} to="games">Games</NavLink></li>
                 <li className="nav-bar-list"><NavLink className={`nav-bar-link ${currentTab === "hidden" ? 'underline' : ''}`} onClick={() => {handleNavClick(); handleTab('hidden');}} to="hidden">Hidden Theme</NavLink></li>
                 <li className="nav-bar-list"><NavLink className={`nav-bar-link ${currentTab === "player" ? 'underline' : ''}`} onClick={() => {handleNavClick(); handleTab('player');}} to="player">Player Chosen</NavLink></li>
                 <li className="nav-bar-list"><NavLink className={`nav-bar-link ${currentTab === "final" ? 'underline' : ''}`} onClick={() => {handleNavClick(); handleTab('final');}} to="final">Wager Questions</NavLink></li>

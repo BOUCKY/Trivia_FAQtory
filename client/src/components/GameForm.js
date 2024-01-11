@@ -69,7 +69,7 @@ function GameForm({addNewGame, setClick}){
                         placeholder=". . ."
                         className="input-text"
                         // Set maximum length to 1 char
-                        value={formData.letter.toUpperCase}
+                        value={formData.letter}
                     />
                 </label>
                 <label htmlFor="round">Round 1:
