@@ -63,6 +63,8 @@ class Game(db.Model, SerializerMixin):
     __tablename__ = 'games'
 
     id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String)
+    date = db.Column(db.String)
     letter = db.Column(db.String)
     round1 = db.Column(db.String)
     round2 = db.Column(db.String)

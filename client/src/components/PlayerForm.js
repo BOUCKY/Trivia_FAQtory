@@ -1,11 +1,9 @@
 import React, {useState}from "react"
 
 
-function FinalForm({addNewPlayer, handleAddQuestion}){
+function FinalForm({addNewPlayer, setClick}){
 
     const [formData, setFormData] = useState({theme:'', song1:'', song2:'', song3:'', question1:'', question2:'', question3:'', answer1:'', answer2:'', answer3:''})
-    // eslint-disable-next-line
-    const [adding, setAdding] = useState(true)
 
 
     const handleSubmit = (e) => {
@@ -25,16 +23,11 @@ function FinalForm({addNewPlayer, handleAddQuestion}){
             .then(data => {
                 // Handle the data or provide feedback to the user if needed
                 console.log('Data saved successfully:', data)
+                addNewPlayer(data)
             })
 
-            .then(newPlayer => addNewPlayer(newPlayer))
-                resetForm()
-                setAdding(false)
-
-            .catch(error => {
-                console.error('There was an error updating the card:', error)
-                // Provide feedback to the user about the error if needed
-            })
+        resetForm()
+        setClick(false)
     }
 
     const resetForm = () => {
@@ -43,8 +36,7 @@ function FinalForm({addNewPlayer, handleAddQuestion}){
 
     const cancel = () =>{
         resetForm()
-        setAdding(false)
-        handleAddQuestion()
+        setClick(false)
     }
 
 

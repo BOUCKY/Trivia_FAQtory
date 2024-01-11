@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faTrashCan } from '@fortawesome/free-regular-svg-icons'
 import { faPrint } from '@fortawesome/free-solid-svg-icons'
 
-function GameCard({id, letter, round1, round2, round3, round4, hidden, player, final, removeCard}){
+function GameCard({id, name, date, letter, round1, round2, round3, round4, hidden, player, final, removeCard}){
     
     function handleDelete(){
         fetch(`http://127.0.0.1:5555/game/${id}`,
@@ -64,6 +64,8 @@ function GameCard({id, letter, round1, round2, round3, round4, hidden, player, f
         <div className="trivia-card-container">
             <div className="trivia-card">
                 <div ref={printableElementRef} className="trivia-card-content">
+                    <p className="trivia-card-title">Name: <p className="info">{name}</p></p>
+                    <p className="trivia-card-title">Date: <p className="info">{date}</p></p>
                     <p className="trivia-card-title">Letter: <p className="info">{letter}</p></p>
                     <p className="trivia-card-title">Round 1: <p className="info">{round1}</p></p>
                     <p className="trivia-card-title">Round 2: <p className="info">{round2}</p></p>

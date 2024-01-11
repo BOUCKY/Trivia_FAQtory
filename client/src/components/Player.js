@@ -340,7 +340,7 @@ function Player(){
     return(
         click ? 
         (<div className="test">
-            <PlayerForm addNewPlayer={addNewPlayer} handleAddQuestion={handleAddQuestion} />
+            <PlayerForm addNewPlayer={addNewPlayer} setClick={setClick} />
         </div>) 
         :
         (<div className="trivia-list">

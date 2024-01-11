@@ -30,17 +30,15 @@ function Home(){
 
     // ----- FUNCTIONALITY-----
     const handleSearchChange = (e) => {
-        setSearch(e.target.value);
+        setSearch(e.target.value)
     }
 
     const handleFilterChange = (e) => {
-        setSelectedFilter(e.target.value);
+        setSelectedFilter(e.target.value)
     }
 
     const letters = [
-        'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 
-        'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 
-        'Y', 'Z'
+        'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
     ]    
 
     // Function to filter trivia based on the starting letter
@@ -49,20 +47,20 @@ function Home(){
             trivia_question.letter && 
             trivia_question.letter.toLowerCase() === letter.toLowerCase() &&
             (trivia_question[selectedFilter] && trivia_question[selectedFilter].toLowerCase().includes(search.toLowerCase()))
-        );
-    };
+        )
+    }
 
     // Function to check if there are filtered trivia items for each letter
     const getFilteredLetters = () => {
-        const filteredLetters = {};
+        const filteredLetters = {}
         letters.forEach(letter => {
             const filteredTrivia = filterTriviaByLetterAndSearch(letter);
             if (filteredTrivia.length > 0) {
-                filteredLetters[letter] = true;
+                filteredLetters[letter] = true
             }
-        });
-        return filteredLetters;
-    };
+        })
+        return filteredLetters
+    }
 
     const filteredLetters = getFilteredLetters();
 
@@ -176,7 +174,7 @@ function Home(){
     return(
         click ? 
         (<div className="test">
-            <TriviaForm addNewTrivia={addNewTrivia} handleAddQuestion={handleAddQuestion} />
+            <TriviaForm addNewTrivia={addNewTrivia} handleAddQuestion={handleAddQuestion} setClick={setClick} />
         </div>) 
         :
         ( <div className="trivia-list">
@@ -185,7 +183,7 @@ function Home(){
             </div>
             <div className="trivia-heading">
                 <div className="trivia-search">
-                    <select className="search-select"value={selectedFilter} onChange={handleFilterChange}>
+                    <select className="search-select" value={selectedFilter} onChange={handleFilterChange}>
                         <option value="letter">Search By: Letter</option>
                         <option value="round">Search By: Round</option>
                         <option value="question">Search By: Question</option>

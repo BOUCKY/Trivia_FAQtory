@@ -458,7 +458,7 @@ function Hidden(){
     return(
         click ? 
         (<div className="test">
-            <HiddenForm addNewHidden={addNewHidden} handleAddQuestion={handleAddQuestion} />
+            <HiddenForm addNewHidden={addNewHidden} setClick={setClick} />
         </div>) 
         :
         (<div className="trivia-list">

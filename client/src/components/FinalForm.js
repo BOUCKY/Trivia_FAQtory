@@ -1,11 +1,8 @@
 import React, {useState}from "react"
 
-function FinalForm({addNewTrivia, handleAddQuestion}){
+function FinalForm({addNewTrivia, setClick}){
 
     const [formData, setFormData] = useState({question:'', answer:''})
-    // eslint-disable-next-line
-    const [adding, setAdding] = useState(true)
-
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -24,16 +21,12 @@ function FinalForm({addNewTrivia, handleAddQuestion}){
             .then(data => {
                 // Handle the data or provide feedback to the user if needed
                 console.log('Data saved successfully:', data)
+                addNewTrivia(data)
             })
 
-            .then(newTrivia => addNewTrivia(newTrivia))
-                resetForm()
-                setAdding(false)
+        resetForm()
+        setClick(false)
 
-            .catch(error => {
-                console.error('There was an error updating the card:', error)
-                // Provide feedback to the user about the error if needed
-            })
     }
 
     const resetForm = () => {
@@ -42,8 +35,7 @@ function FinalForm({addNewTrivia, handleAddQuestion}){
 
     const cancel = () =>{
         resetForm()
-        setAdding(false)
-        handleAddQuestion()
+        setClick(false)
     }
 
 

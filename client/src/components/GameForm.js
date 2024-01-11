@@ -1,10 +1,8 @@
 import React, {useState}from "react"
 
-function GameForm({addNewGame, handleAddQuestion}){
+function GameForm({addNewGame, setClick}){
 
-    const [formData, setFormData] = useState({letter:'', round1: '', round2: '', round3: '', round4: '',  hidden_round: '', player_round:'', final_wager:''})
-    // eslint-disable-next-line
-    const [adding, setAdding] = useState(true)
+    const [formData, setFormData] = useState({name: '', date: '', letter:'', round1: '', round2: '', round3: '', round4: '',  hidden_round: '', player_round:'', final_wager:''})
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -23,22 +21,20 @@ function GameForm({addNewGame, handleAddQuestion}){
             .then(data => {
                 // Handle the data or provide feedback to the user if needed
                 console.log('Data saved successfully:', data)
+                addNewGame(data)
             })
 
-            .then(newGame => addNewGame(newGame))
-                resetForm()
-                setAdding(false)
-
+        resetForm()
+        setClick(false)
     }
 
     const resetForm = () => {
-        setFormData({ letter:'', round1: '', round2: '', round3: '', round4: '',  hidden_round: '', player_round:'', final_wager:'' });
+        setFormData({ name: '', date: '', letter:'', round1: '', round2: '', round3: '', round4: '',  hidden_round: '', player_round:'', final_wager:'' });
     }
 
     const cancel = () =>{
         resetForm()
-        setAdding(false)
-        handleAddQuestion()
+        setClick(false)
     }
 
 
@@ -48,13 +44,32 @@ function GameForm({addNewGame, handleAddQuestion}){
                 <div className="form-heading">
                     <p>Add A Game!</p>
                 </div>
+                <label htmlFor="name">Name:
+                    <input
+                        onChange={(e) => {setFormData({...formData, name: e.target.value})}}
+                        type='text'
+                        placeholder=". . ."
+                        className="input-text"
+                        value={formData.name}
+                    />
+                </label>
+                <label htmlFor="date">Date:
+                    <input
+                        onChange={(e) => {setFormData({...formData, date: e.target.value})}}
+                        type='text'
+                        placeholder=". . ."
+                        className="input-text"
+                        value={formData.date}
+                    />
+                </label>
                 <label htmlFor="letter">Letter:
                     <input
                         onChange={(e) => {setFormData({...formData, letter: e.target.value})}}
                         type='text'
                         placeholder=". . ."
                         className="input-text"
-                        value={formData.letter}
+                        // Set maximum length to 1 char
+                        value={formData.letter.toUpperCase}
                     />
                 </label>
                 <label htmlFor="round">Round 1:

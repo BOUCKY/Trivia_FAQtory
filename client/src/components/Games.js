@@ -14,13 +14,26 @@ function Games(){
     // -----STATES-----
     const [game, setGame] = useState([])
     const [search, setSearch] = useState('')
+    const [selectedFilter, setSelectedFilter] = useState('letter')
     const [click, setClick] = useState(false)
 
     // -----FETCH REQUESTS-----
     useEffect(() => {
-        fetch('http://127.0.0.1:5555/game')
+        fetch('http://127.0.0.1:5555/game',{
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            // Add any other necessary headers
+        },
+    })
+
+
         .then(r => r.json())
         .then(data => setGame(data))
+        .catch(error => {
+            console.error('Error during fetch:', error);
+            // Handle the error or provide feedback to the user if needed
+        })
     }, [])
 
     // -----FUNCTIONALITY-----
@@ -28,19 +41,31 @@ function Games(){
         setSearch(e.target.value)
     }
 
+    const handleFilterChange = (e) => {
+        setSelectedFilter(e.target.value)
+    }
+
     const letters = [
         'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
     ]  
 
+
+    // Function to filter trivia based on the starting letter
+    const filterGameByLetterAndSearch = (letter) => {
+        return game.filter(game_question =>
+            game_question.letter && 
+            game_question.letter.toLowerCase() === letter.toLowerCase() &&
+            (game_question[selectedFilter] && game_question[selectedFilter].toLowerCase().includes(search.toLowerCase()))
+        )
+    }
+
+    // Function to check if there are filtered trivia items for each letter
     const getFilteredLetters = () => {
         const filteredLetters = {}
-        letters.forEach(single_letter => {
-            const filteredGames = game.filter(game_question =>
-                game_question.letter.charAt(0).toUpperCase() === single_letter &&
-                game_question.letter.toLowerCase().startsWith(search.toLowerCase())
-            )
-            if (filteredGames.length > 0) {
-                filteredLetters[single_letter] = true
+        letters.forEach(letter => {
+            const filteredTrivia = filterGameByLetterAndSearch(letter);
+            if (filteredTrivia.length > 0) {
+                filteredLetters[letter] = true
             }
         })
         return filteredLetters
@@ -63,10 +88,11 @@ function Games(){
         setGame([...game, newGame])
     }
 
+
     return(
         click ? 
         (<div className="test">
-            <GameForm addNewGame={addNewGame} handleAddQuestion={handleAddQuestion} />
+            <GameForm addNewGame={addNewGame} setClick={setClick} />
         </div>) 
         :
         ( <div className="trivia-list">
@@ -75,13 +101,15 @@ function Games(){
             </div>
             <div className="trivia-heading">
                 <div className="trivia-search">
-                    <select className="search-select" defaultValue="letter">
+                    <select className="search-select" value={selectedFilter} onChange={handleFilterChange}>
                         <option value="letter">Search By: Letter</option>
+                        <option value="name">Search By: Name</option>
+                        <option value="date">Search By: Date</option>
                     </select>
                     <input
                         className="search-input"
                         type="text"
-                        placeholder={`Search by Letter`}
+                        placeholder={`Search by ${selectedFilter}`}
                         value={search}
                         onChange={handleSearchChange}
                     />
@@ -95,16 +123,12 @@ function Games(){
                 filteredLetters[letter] && (
                     <div key={letter}>
                         <p className="letter-heading">{letter}</p>
-                        {game
-                            .filter(game_question =>
-                                game_question.letter.charAt(0).toUpperCase() === letter &&
-                                game_question.letter.toLowerCase().includes(search.toLowerCase())
-                            )
-                            .sort((a, b) => a.letter.localeCompare(b.letter))
-                            .map(filtered_game => (
+                        {filterGameByLetterAndSearch(letter).sort((a, b) => a.round.localeCompare(b.round)).map(filtered_game => (
                                 <GameCard
                                     key={filtered_game.id}
                                     id={filtered_game.id}
+                                    name={filtered_game.name}
+                                    date={filtered_game.date}
                                     letter={filtered_game.letter}
                                     round1={filtered_game.round1}
                                     round2={filtered_game.round2}
@@ -125,3 +149,4 @@ function Games(){
 }
 
 export default Games
+

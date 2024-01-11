@@ -1,11 +1,9 @@
 import React, {useState}from "react"
 
 
-function HiddenForm({addNewHidden, handleAddQuestion}){
+function HiddenForm({addNewHidden, setClick}){
 
     const [formData, setFormData] = useState({letter:'', theme:'', song1:'', song2:'', song3:'', song4:'', question1:'', question2:'', question3:'', question4:'', question5:'', answer1:'', answer2:'', answer3:'', answer4:'', answer5:''})
-    // eslint-disable-next-line
-    const [adding, setAdding] = useState(true)
 
 
     const handleSubmit = (e) => {
@@ -25,16 +23,11 @@ function HiddenForm({addNewHidden, handleAddQuestion}){
             .then(data => {
                 // Handle the data or provide feedback to the user if needed
                 console.log('Data saved successfully:', data)
+                addNewHidden(data)
             })
 
-            .then(newHidden => addNewHidden(newHidden))
-                resetForm()
-                setAdding(false)
-
-            .catch(error => {
-                console.error('There was an error updating the card:', error)
-                // Provide feedback to the user about the error if needed
-            })
+        resetForm()
+        setClick(false)
     }
 
     const resetForm = () => {
@@ -43,8 +36,7 @@ function HiddenForm({addNewHidden, handleAddQuestion}){
 
     const cancel = () =>{
         resetForm()
-        setAdding(false)
-        handleAddQuestion()
+        setClick(false)
     }
 
 

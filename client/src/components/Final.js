@@ -105,7 +105,7 @@ function Final(){
     return(
         click ? 
         (<div className="test">
-            <FinalForm addNewTrivia={addNewTrivia} handleAddQuestion={handleAddQuestion} />
+            <FinalForm addNewTrivia={addNewTrivia} setClick={setClick} />
         </div>) 
         :(
             <div className="trivia-list">

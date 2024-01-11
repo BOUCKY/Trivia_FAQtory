@@ -260,6 +260,8 @@ def game():
         data = request.get_json()
         try:
             new_game = Game(
+                name = data['name'],
+                date = data['date'],
                 letter = data['letter'],
                 round1 = data['round1'],
                 round2 = data['round2'],
