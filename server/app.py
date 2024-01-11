@@ -277,7 +277,7 @@ def game():
         except ValueError as v_error:
             return make_response({'errors':[v_error]},400)
         
-@app.route('/game/<int:id>', methods=['GET', 'DELETE'])
+@app.route('/game/<int:id>', methods=['GET', 'PATCH', 'DELETE'])
 def game_id(id):
     game = Game.query.filter(Game.id == id).first()
         
@@ -287,6 +287,17 @@ def game_id(id):
         else:
             return make_response({'error': 'Game not found.'}, 404)
     
+    if request.method == 'PATCH':
+        if game == None:
+            return make_response({'error': 'Game not found.'}, 404)
+        
+        data = request.get_json()
+        for attr in data:
+            setattr(game, attr, data[attr])
+        db.session.add(game)
+        db.session.commit()
+        return make_response(game.to_dict(), 200)
+
     if request.method == 'DELETE':
         if game == None:
             return make_response({'error': 'Game not found.'}, 404)

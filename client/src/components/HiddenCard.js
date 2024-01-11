@@ -22,12 +22,12 @@ function HiddenCard({id, theme, song1, song2, song3, song4, question1, answer1, 
     const cardText =  `Round: ${theme}\nSongs: ${song1}${song2}${song3}${song4}\nQuestion: ${question1}\nAnswer: ${answer1}}\nQuestion: ${question2}\nAnswer: ${answer2}\nQuestion: ${question3}\nAnswer: ${answer3}\nQuestion: ${question4}\nAnswer: ${answer4}\nQuestion: ${question5}\nAnswer: ${answer5}`
 
 
-    const [editing, setEditing] = useState(false); // Add state for editing mode
+    const [editing, setEditing] = useState(false) // Add state for editing mode
     const [editedTheme, setEditedTheme] = useState(theme)
-    const [editedSong1, setEditedSong1] = useState(song1);
-    const [editedSong2, setEditedSong2] = useState(song2);
-    const [editedSong3, setEditedSong3] = useState(song3);
-    const [editedSong4, setEditedSong4] = useState(song4);
+    const [editedSong1, setEditedSong1] = useState(song1)
+    const [editedSong2, setEditedSong2] = useState(song2)
+    const [editedSong3, setEditedSong3] = useState(song3)
+    const [editedSong4, setEditedSong4] = useState(song4)
     const [editedQuestion1, setEditedQuestion1] = useState(question1)
     const [editedAnswer1, setEditedAnswer1] = useState(answer1)
     const [editedQuestion2, setEditedQuestion2] = useState(question2)
@@ -78,7 +78,7 @@ function HiddenCard({id, theme, song1, song2, song3, song4, question1, answer1, 
         })
 
         .catch(error => {
-            console.error('There was an error updating the card:', error);
+            console.error('There was an error updating the card:', error)
         })
     }
     

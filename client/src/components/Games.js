@@ -79,6 +79,233 @@ function Games(){
         setGame((currentCard) => currentCard.filter((card) => card.id !== id))
     }
 
+    // Edit Functions
+    // HEADINGS
+    const updateName = (cardId, newName) => {
+        fetch(`http://127.0.0.1:5555/game/${cardId}`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name: newName }),
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok')
+            }
+            return response.json()
+        })
+        .then(updatedCard => {
+            setGame(prevTrivia =>
+                prevTrivia.map(card => (card.id === cardId ? { ...card, name: updatedCard.name } : card))
+            )
+        })
+        .catch(error => {
+            console.error('There was an error updating the name:', error)
+        })
+    }
+
+    const updateDate = (cardId, newDate) => {
+        fetch(`http://127.0.0.1:5555/game/${cardId}`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ date: newDate }),
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok')
+            }
+            return response.json()
+        })
+        .then(updatedCard => {
+            setGame(prevTrivia =>
+                prevTrivia.map(card => (card.id === cardId ? { ...card, date: updatedCard.date } : card))
+            )
+        })
+        .catch(error => {
+            console.error('There was an error updating the round:', error)
+        })
+    }
+
+    const updateLetter = (cardId, newLetter) => {
+        fetch(`http://127.0.0.1:5555/game/${cardId}`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ letter: newLetter }),
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok')
+            }
+            return response.json()
+        })
+        .then(updatedCard => {
+            setGame(prevTrivia =>
+                prevTrivia.map(card => (card.id === cardId ? { ...card, letter: updatedCard.letter } : card))
+            )
+        })
+        .catch(error => {
+            console.error('There was an error updating the round:', error)
+        })
+    }
+
+
+    // REGULAR ROUNDS   
+    const updateRound1 = (cardId, newRound) => {
+        fetch(`http://127.0.0.1:5555/game/${cardId}`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ round: newRound }),
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok')
+            }
+            return response.json()
+        })
+        .then(updatedCard => {
+            setGame(prevTrivia =>
+                prevTrivia.map(card => (card.id === cardId ? { ...card, round1: updatedCard.round1 } : card))
+            )
+        })
+        .catch(error => {
+            console.error('There was an error updating the round:', error)
+        })
+    }
+
+    const updateRound2 = (cardId, newRound) => {
+        fetch(`http://127.0.0.1:5555/game/${cardId}`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ round: newRound }),
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok')
+            }
+            return response.json()
+        })
+        .then(updatedCard => {
+            setGame(prevTrivia =>
+                prevTrivia.map(card => (card.id === cardId ? { ...card, round2: updatedCard.round2 } : card))
+            )
+        })
+        .catch(error => {
+            console.error('There was an error updating the round:', error)
+        })
+    }
+
+    const updateRound3 = (cardId, newRound) => {
+        fetch(`http://127.0.0.1:5555/game/${cardId}`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ round: newRound }),
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok')
+            }
+            return response.json()
+        })
+        .then(updatedCard => {
+            setGame(prevTrivia =>
+                prevTrivia.map(card => (card.id === cardId ? { ...card, round3: updatedCard.round3 } : card))
+            )
+        })
+        .catch(error => {
+            console.error('There was an error updating the round:', error)
+        })
+    }
+
+    const updateRound4 = (cardId, newRound) => {
+        fetch(`http://127.0.0.1:5555/game/${cardId}`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ round: newRound }),
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok')
+            }
+            return response.json()
+        })
+        .then(updatedCard => {
+            setGame(prevTrivia =>
+                prevTrivia.map(card => (card.id === cardId ? { ...card, round4: updatedCard.round4 } : card))
+            )
+        })
+        .catch(error => {
+            console.error('There was an error updating the round:', error)
+        })
+    }
+
+    // HIDDEN THEME ROUND
+    const updateHidden = (cardId, newHidden) => {
+        fetch(`http://127.0.0.1:5555/game/${cardId}`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ hidden: newHidden }),
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok')
+            }
+            return response.json()
+        })
+        .then(updatedCard => {
+            setGame(prevTrivia =>
+                prevTrivia.map(card => (card.id === cardId ? { ...card, hidden: updatedCard.hidden } : card))
+            )
+        })
+        .catch(error => {
+            console.error('There was an error updating the round:', error)
+        })
+    }
+
+    // PLAYER CHOSEN ROUND
+    const updatePlayer = (cardId, newPlayer) => {
+        fetch(`http://127.0.0.1:5555/game/${cardId}`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ player: newPlayer }),
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok')
+            }
+            return response.json()
+        })
+        .then(updatedCard => {
+            setGame(prevTrivia =>
+                prevTrivia.map(card => (card.id === cardId ? { ...card, player: updatedCard.player } : card))
+            )
+        })
+        .catch(error => {
+            console.error('There was an error updating the round:', error)
+        })
+    }
+
+    // FINAL WAGER
+    const updateFinal = (cardId, newFinal) => {
+        fetch(`http://127.0.0.1:5555/game/${cardId}`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ final: newFinal }),
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok')
+            }
+            return response.json()
+        })
+        .then(updatedCard => {
+            setGame(prevTrivia =>
+                prevTrivia.map(card => (card.id === cardId ? { ...card, final: updatedCard.final } : card))
+            )
+        })
+        .catch(error => {
+            console.error('There was an error updating the round:', error)
+        })
+    }
+
     // Add a Game Functionality
     const handleAddQuestion = () =>{
         setClick(prevCLick => !prevCLick)
@@ -137,6 +364,16 @@ function Games(){
                                     hidden={filtered_game.hidden_round}
                                     player={filtered_game.player_round}
                                     final={filtered_game.final_wager}
+                                    setName={newName => updateName(filtered_game.id, newName)}
+                                    setDate={newDate => updateDate(filtered_game.id, newDate)}
+                                    setLetter={newLetter => updateLetter(filtered_game.id, newLetter)}
+                                    setRound1={newRound => updateRound1(filtered_game.id, newRound)}
+                                    setRound2={newRound => updateRound2(filtered_game.id, newRound)}
+                                    setRound3={newRound => updateRound3(filtered_game.id, newRound)}
+                                    setRound4={newRound => updateRound4(filtered_game.id, newRound)}
+                                    setHidden={newHidden => updateHidden(filtered_game.id, newHidden)}
+                                    setPlayer={newPlayer=> updatePlayer(filtered_game.id, newPlayer)}
+                                    setFinal={newFinal => updateFinal(filtered_game.id, newFinal)}
                                     removeCard={removeCard}
                                 />
                             ))}
