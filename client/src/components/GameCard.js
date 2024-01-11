@@ -185,22 +185,24 @@ function GameCard({id, name, date, letter, round1, round2, round3, round4, hidde
                 </div>
               </div>  
             ) : (
-              <div ref={printableElementRef} className="trivia-card-content">
-                <p className="trivia-card-title">Name: <p className="info">{name}</p></p>
-                <p className="trivia-card-title">Date: <p className="info">{date}</p></p>
-                <p className="trivia-card-title">Letter: <p className="info">{letter}</p></p>
-                <p className="trivia-card-title">Round 1: <p className="info">{round1}</p></p>
-                <p className="trivia-card-title">Round 2: <p className="info">{round2}</p></p>
-                <p className="trivia-card-title">Hidden Theme Round: <p className="info">{hidden}</p></p>
-                <p className="trivia-card-title">Player Chosen Round: <p className="info">{player}</p></p>
-                <p className="trivia-card-title">Round 3: <p className="info">{round3}</p></p>
-                <p className="trivia-card-title">Round 4: <p className="info">{round4}</p></p>
-                <p className="trivia-card-title">Final Wager Question: <p className="info">{final}</p></p>
-                <div className="edit-and-delete-buttons">
-                    <button className="print-button" onClick={handlePrint}>{print}</button>
-                    <button className='edit-button'onClick={handleEdit} >{edit}</button>
-                    <button className='delete-button' onClick={handleDelete}>{trash}</button>
+              <div>
+                <div ref={printableElementRef} className="trivia-card-content">
+                  <p className="trivia-card-title">Name: <p className="info">{name}</p></p>
+                  <p className="trivia-card-title">Date: <p className="info">{date}</p></p>
+                  <p className="trivia-card-title">Letter: <p className="info">{letter}</p></p>
+                  <p className="trivia-card-title">Round 1: <p className="info">{round1}</p></p>
+                  <p className="trivia-card-title">Round 2: <p className="info">{round2}</p></p>
+                  <p className="trivia-card-title">Hidden Theme Round: <p className="info">{hidden}</p></p>
+                  <p className="trivia-card-title">Player Chosen Round: <p className="info">{player}</p></p>
+                  <p className="trivia-card-title">Round 3: <p className="info">{round3}</p></p>
+                  <p className="trivia-card-title">Round 4: <p className="info">{round4}</p></p>
+                  <p className="trivia-card-title">Final Wager Question: <p className="info">{final}</p></p>
                 </div>
+                  <div className="edit-and-delete-buttons">
+                      <button className="print-button" onClick={handlePrint}>{print}</button>
+                      <button className='edit-button'onClick={handleEdit} >{edit}</button>
+                      <button className='delete-button' onClick={handleDelete}>{trash}</button>
+                  </div>
               </div>
             )}
             </div>
