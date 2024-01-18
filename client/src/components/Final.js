@@ -1,6 +1,8 @@
 import React, {useState, useEffect}from "react"
 import FinalCard from './FinalCard'
 import FinalForm from "./FinalForm"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faDice} from '@fortawesome/free-solid-svg-icons'
 import '../styling/Home.css'
 import Logo from '../logo.png'
 
@@ -11,11 +13,14 @@ function Final(){
         document.title="Trivia FAQtory | Wager Questions"
     }, [])
 
+    const dice = <FontAwesomeIcon icon={faDice} />
+
     // -----STATES-----
     const [trivia, setTrivia] = useState([])
     const [search, setSearch] = useState('')
     const [selectedFilter, setSelectedFilter] = useState('question')
     const [click, setClick] = useState(false)
+    const [randomQuestion, setRandomQuestion] = useState(null)
 
     // -----FETCH REQUESTS-----
     useEffect(() => {
@@ -102,6 +107,17 @@ function Final(){
             setTrivia([...trivia, newTrivia])
         }
 
+        // Generate A Random Question
+        const handleGetRandomQuestion = () => {
+            // Check if there are questions available
+            if (trivia.length > 0) {
+              // Get a random index
+              const randomIndex = Math.floor(Math.random() * trivia.length);
+              // Set the random question
+              setRandomQuestion(trivia[randomIndex]);
+            }
+        }
+
     return(
         click ? 
         (<div className="test">
@@ -128,20 +144,38 @@ function Final(){
                     </div>
                     <div className="add">
                         <button className="add-questions" onClick={handleAddQuestion}>Add A Question</button>
+                        <button className="get-random-question" onClick={handleGetRandomQuestion}>{dice}</button>
                     </div>
                 </div>
                 <div className="trivia-body">
-                    {filteredFinal.map(filtered_trivia => (
+                {/* Display the randomly selected question */}
+                {randomQuestion && (
+                    <div className="random-question-box">
+                    <p className="random-question-title">Random Question:</p>
+                    <div className="random-question">
                         <FinalCard
-                            key={filtered_trivia.id}
-                            id={filtered_trivia.id}
-                            question={filtered_trivia.question}
-                            answer={filtered_trivia.answer}
-                            setQuestion={newQuestion => updateQuestion(filtered_trivia.id, newQuestion)}
-                            setAnswer={newAnswer => updateAnswer(filtered_trivia.id, newAnswer)}
-                            removeCard={removeCard}
+                            key={randomQuestion.id}
+                            id={randomQuestion.id}
+                            question={randomQuestion.question}
+                            answer={randomQuestion.answer}
+                            setQuestion={newQuestion => updateQuestion(randomQuestion.id, newQuestion)}
+                            setAnswer={newAnswer => updateAnswer(randomQuestion.id, newAnswer)}
+                            removeCard={() => removeCard(randomQuestion.id)}
                         />
-                    ))}
+                    </div>
+                    </div>
+                )}
+                {filteredFinal.map(filtered_trivia => (
+                    <FinalCard
+                        key={filtered_trivia.id}
+                        id={filtered_trivia.id}
+                        question={filtered_trivia.question}
+                        answer={filtered_trivia.answer}
+                        setQuestion={newQuestion => updateQuestion(filtered_trivia.id, newQuestion)}
+                        setAnswer={newAnswer => updateAnswer(filtered_trivia.id, newAnswer)}
+                        removeCard={removeCard}
+                    />
+                ))}
                 </div>
             </div>
         )
