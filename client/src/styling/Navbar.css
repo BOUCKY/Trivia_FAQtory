@@ -9,7 +9,7 @@
     height: 100px;
     padding-bottom: 10px;
     padding-top: 10px;
-    background-color: #58c8fc;
+    background-image: linear-gradient(rgb(88, 200, 252), rgb(32, 76, 115));
     color: #ffffff;
 }
 .nav-bar{
@@ -53,14 +53,14 @@
 
 .underline{
     border-bottom: 3px solid #ffffff;
-    box-shadow: 0px 15px 12px -10px rgba(88,200,252,255);
+    /* box-shadow: 0px 15px 12px -10px rgba(88,200,252,255); */
 }
 
 
 
 .mobile {
     color: #ffffff;
-    background-color: #58c8fc;
+    background-color: transparent;
     border: none;
     cursor: pointer;
     margin-right: 25px;
@@ -86,8 +86,8 @@
         background-color: white;
         height: 350px;
         z-index: 2;
-        border-left: 4px solid #58c8fc;
-        border-bottom: 4px solid #58c8fc;
+        border-left: 4px solid #31719c;
+        border-bottom: 4px solid #31719c;
     }
     .nav-bar{
         display: none;
@@ -98,7 +98,7 @@
     }
     .nav-bar-link{
         text-align: center;
-        color: #58c8fc;
+        color: #31719c;
     }
     .mobile{
         display: block;

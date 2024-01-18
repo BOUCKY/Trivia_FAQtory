@@ -488,7 +488,7 @@ function Hidden(){
             <div className="trivia-body">
                 {letters.map(letter => (
                     filteredLetters[letter] && (
-                        <div key={letter}>
+                        <div className="body-box" key={letter}>
                             <p className="letter-heading">{letter}</p>
                             {filterHiddenByLetterAndSearch(letter).sort((a, b) => a.theme.localeCompare(b.theme)).map(filtered_hidden => (
                                 <HiddenCard

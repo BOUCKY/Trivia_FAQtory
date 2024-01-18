@@ -1,7 +1,9 @@
 body{
     margin: 0;
     font-family: 'Bree Serif', serif;
-    color: #204c73;
+    color: #31719c;
+    background-image: url(../4.png);
+    background-repeat: repeat-x repeat-y;
 }
 
 .App{

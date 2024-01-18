@@ -204,7 +204,7 @@ function Home(){
             <div className="trivia-body">
                 {letters.map(letter => (
                     filteredLetters[letter] && (
-                        <div key={letter}>
+                        <div className="body-box" key={letter}>
                             <p className="letter-heading">{letter}</p>
                             {filterTriviaByLetterAndSearch(letter).sort((a, b) => a.round.localeCompare(b.round)).map(filtered_trivia => (
                                 <TriviaCard
