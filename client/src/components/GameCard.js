@@ -1,7 +1,8 @@
 import { useRef, useState } from "react"
+import {CopyToClipboard} from 'react-copy-to-clipboard'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faTrashCan, faPenToSquare } from '@fortawesome/free-regular-svg-icons'
-import { faPrint } from '@fortawesome/free-solid-svg-icons'
+import { faTrashCan, faPenToSquare, faCopy } from '@fortawesome/free-regular-svg-icons'
+import { faPrint, faCheck } from '@fortawesome/free-solid-svg-icons'
 
 function GameCard({id, name, date, letter, round1, round2, round3, round4, hidden, player, final, setName, setDate, setLetter, setRound1, setRound2, setRound3 ,setRound4, setHidden, setPlayer, setFinal, removeCard}){
     
@@ -14,6 +15,10 @@ function GameCard({id, name, date, letter, round1, round2, round3, round4, hidde
     const edit = <FontAwesomeIcon icon={faPenToSquare} style={{color: "#204c73",}} size='sm' />
     const trash = <FontAwesomeIcon icon={faTrashCan} style={{color: "#204c73",}} size='sm' />
     const print = <FontAwesomeIcon icon={faPrint} style={{color: "#204c73",}} size='sm' />
+    const copy = <FontAwesomeIcon icon={faCopy} style={{color: "#204c73",}} size='sm' />
+    const check = <FontAwesomeIcon icon={faCheck} style={{color: "#204c73",}} size='sm' />
+
+    const cardText =  `Name: ${name}\nDate: ${date}\nLetter: ${letter}\nRound 1: ${round1}\nRound 2: ${round2}\nHidden Theme Round: ${hidden}\nPlayer Chosen Round: ${player}\nRound 3: ${round3}\nRound 4: ${round4}\nFinal Wager Question: ${final}\n`
 
 
     const [editing, setEditing] = useState(false) // Add state for editing mode
@@ -27,6 +32,8 @@ function GameCard({id, name, date, letter, round1, round2, round3, round4, hidde
     const [editedHidden, setEditedHidden] = useState(hidden)
     const [editedPlayer, setEditedPlayer] = useState(player)
     const [editedFinal, setEditedFinal] = useState(final)
+    // eslint-disable-next-line
+    const [copied, setCopied] = useState(false)
 
     const handleEdit = () => {
       setEditing(true)
@@ -111,6 +118,14 @@ function GameCard({id, name, date, letter, round1, round2, round3, round4, hidde
       printWindow.print();
       printWindow.close();
     }
+
+
+  const handleCopy = () => {
+    setCopied(true)
+    setTimeout(() => {
+        setCopied(false)
+    }, 2000)
+  }
     
 
 
@@ -199,6 +214,9 @@ function GameCard({id, name, date, letter, round1, round2, round3, round4, hidde
                   <p className="trivia-card-title">Final Wager Question: <p className="info">{final}</p></p>
                 </div>
                   <div className="edit-and-delete-buttons">
+                      <CopyToClipboard text={cardText}>
+                        <button className="copy-button" onClick={handleCopy}>{copied ? check : copy}</button>
+                      </CopyToClipboard>
                       <button className="print-button" onClick={handlePrint}>{print}</button>
                       <button className='edit-button'onClick={handleEdit} >{edit}</button>
                       <button className='delete-button' onClick={handleDelete}>{trash}</button>
