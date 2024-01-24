@@ -7,9 +7,9 @@ from flask import request, make_response, session, send_from_directory
 from flask_restful import Resource
 
 # Local imports
-from server.config import app, db, api
+from config import app, db, api
 # Add your model imports
-from server.models import Trivia, Hidden, Player, Final, Game
+from models import Trivia, Hidden, Player, Final, Game
 
 # Views go here!
 
