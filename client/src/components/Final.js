@@ -24,7 +24,7 @@ function Final(){
 
     // -----FETCH REQUESTS-----
     useEffect(() => {
-        fetch('http://127.0.0.1:5555/final')
+        fetch('https://triviafaqtory-super-secret-backend.onrender.com/final')
         .then(r => r.json())
         .then(data => setTrivia(data))
     },[])
@@ -55,7 +55,7 @@ function Final(){
 
     // Edit funcitons
     const updateQuestion = (cardId, newQuestion) => {
-        fetch(`http://127.0.0.1:5555/final/${cardId}`, {
+        fetch(`https://triviafaqtory-super-secret-backend.onrender.com/final/${cardId}`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ question: newQuestion }),
@@ -77,7 +77,7 @@ function Final(){
     }
 
     const updateAnswer = (cardId, newAnswer) => {
-        fetch(`http://127.0.0.1:5555/final/${cardId}`, {
+        fetch(`https://triviafaqtory-super-secret-backend.onrender.com/final/${cardId}`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ answer: newAnswer }),

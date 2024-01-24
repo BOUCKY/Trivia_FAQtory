@@ -19,7 +19,7 @@ function Games(){
 
     // -----FETCH REQUESTS-----
     useEffect(() => {
-        fetch('http://127.0.0.1:5555/game',{
+        fetch('https://triviafaqtory-super-secret-backend.onrender.com/game',{
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -82,7 +82,7 @@ function Games(){
     // Edit Functions
     // HEADINGS
     const updateName = (cardId, newName) => {
-        fetch(`http://127.0.0.1:5555/game/${cardId}`, {
+        fetch(`https://triviafaqtory-super-secret-backend.onrender.com/game/${cardId}`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ name: newName }),
@@ -104,7 +104,7 @@ function Games(){
     }
 
     const updateDate = (cardId, newDate) => {
-        fetch(`http://127.0.0.1:5555/game/${cardId}`, {
+        fetch(`https://triviafaqtory-super-secret-backend.onrender.com/game/${cardId}`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ date: newDate }),
@@ -126,7 +126,7 @@ function Games(){
     }
 
     const updateLetter = (cardId, newLetter) => {
-        fetch(`http://127.0.0.1:5555/game/${cardId}`, {
+        fetch(`https://triviafaqtory-super-secret-backend.onrender.com/game/${cardId}`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ letter: newLetter }),
@@ -150,7 +150,7 @@ function Games(){
 
     // REGULAR ROUNDS   
     const updateRound1 = (cardId, newRound) => {
-        fetch(`http://127.0.0.1:5555/game/${cardId}`, {
+        fetch(`https://triviafaqtory-super-secret-backend.onrender.com/game/${cardId}`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ round: newRound }),
@@ -172,7 +172,7 @@ function Games(){
     }
 
     const updateRound2 = (cardId, newRound) => {
-        fetch(`http://127.0.0.1:5555/game/${cardId}`, {
+        fetch(`https://triviafaqtory-super-secret-backend.onrender.com/game/${cardId}`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ round: newRound }),
@@ -194,7 +194,7 @@ function Games(){
     }
 
     const updateRound3 = (cardId, newRound) => {
-        fetch(`http://127.0.0.1:5555/game/${cardId}`, {
+        fetch(`https://triviafaqtory-super-secret-backend.onrender.com/game/${cardId}`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ round: newRound }),
@@ -216,7 +216,7 @@ function Games(){
     }
 
     const updateRound4 = (cardId, newRound) => {
-        fetch(`http://127.0.0.1:5555/game/${cardId}`, {
+        fetch(`https://triviafaqtory-super-secret-backend.onrender.com/game/${cardId}`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ round: newRound }),
@@ -239,7 +239,7 @@ function Games(){
 
     // HIDDEN THEME ROUND
     const updateHidden = (cardId, newHidden) => {
-        fetch(`http://127.0.0.1:5555/game/${cardId}`, {
+        fetch(`https://triviafaqtory-super-secret-backend.onrender.com/game/${cardId}`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ hidden: newHidden }),
@@ -262,7 +262,7 @@ function Games(){
 
     // PLAYER CHOSEN ROUND
     const updatePlayer = (cardId, newPlayer) => {
-        fetch(`http://127.0.0.1:5555/game/${cardId}`, {
+        fetch(`https://triviafaqtory-super-secret-backend.onrender.com/game/${cardId}`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ player: newPlayer }),
@@ -285,7 +285,7 @@ function Games(){
 
     // FINAL WAGER
     const updateFinal = (cardId, newFinal) => {
-        fetch(`http://127.0.0.1:5555/game/${cardId}`, {
+        fetch(`https://triviafaqtory-super-secret-backend.onrender.com/game/${cardId}`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ final: newFinal }),

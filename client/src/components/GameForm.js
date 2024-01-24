@@ -6,7 +6,7 @@ function GameForm({addNewGame, setClick}){
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        fetch(`http://127.0.0.1:5555/game`, {
+        fetch(`https://triviafaqtory-super-secret-backend.onrender.com/game`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({...formData, }),

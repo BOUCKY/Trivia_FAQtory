@@ -8,7 +8,7 @@ import { faCheck } from '@fortawesome/free-solid-svg-icons'
 function HiddenCard({id, theme, song1, song2, song3, song4, question1, answer1, question2, answer2, question3, answer3, question4, answer4, question5, answer5, removeCard, setTheme, setSong1, setSong2, setSong3, setSong4, setQuestion1, setQuestion2, setQuestion3, setQuestion4, setQuestion5, setAnswer1, setAnswer2, setAnswer3, setAnswer4, setAnswer5}){
 
     function handleDelete(){
-        fetch(`http://127.0.0.1:5555/hidden/${id}`,
+        fetch(`https://triviafaqtory-super-secret-backend.onrender.com/hidden/${id}`,
         {method: "DELETE",})
         .then(() => removeCard(id))
         
@@ -46,7 +46,7 @@ function HiddenCard({id, theme, song1, song2, song3, song4, question1, answer1, 
     }
 
     const handleSave = () => {
-        fetch(`http://127.0.0.1:5555/hidden/${id}`, {
+        fetch(`https://triviafaqtory-super-secret-backend.onrender.com/hidden/${id}`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ theme: editedTheme, song1: editedSong1, song2: editedSong2, song3: editedSong3, song4: editedSong4, question1: editedQuestion1, question2: editedQuestion2, question3: editedQuestion3, question4: editedQuestion4, question5: editedQuestion5, answer1: editedAnswer1, answer2: editedAnswer2, answer3: editedAnswer3, answer4: editedAnswer4, answer5: editedAnswer5 }),

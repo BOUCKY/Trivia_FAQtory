@@ -7,7 +7,7 @@ import { faCheck } from '@fortawesome/free-solid-svg-icons'
 function TriviaCard({id, round, song, question, answer, removeCard, setRound, setSong, setQuestion, setAnswer}){
 
     function handleDelete(){
-        fetch(`http://127.0.0.1:5555/trivia/${id}`,
+        fetch(`https://triviafaqtory-super-secret-backend.onrender.com/trivia/${id}`,
         {method: "DELETE",})
         .then(() => removeCard(id))
         
@@ -34,7 +34,7 @@ function TriviaCard({id, round, song, question, answer, removeCard, setRound, se
     }
 
     const handleSave = () => {
-        fetch(`http://127.0.0.1:5555/trivia/${id}`, {
+        fetch(`https://triviafaqtory-super-secret-backend.onrender.com/trivia/${id}`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ round: editedRound, song: editedSong, question: editedQuestion, answer: editedAnswer }),

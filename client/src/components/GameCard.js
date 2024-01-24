@@ -7,7 +7,7 @@ import { faPrint, faCheck } from '@fortawesome/free-solid-svg-icons'
 function GameCard({id, name, date, letter, round1, round2, round3, round4, hidden, player, final, setName, setDate, setLetter, setRound1, setRound2, setRound3 ,setRound4, setHidden, setPlayer, setFinal, removeCard}){
     
     function handleDelete(){
-        fetch(`http://127.0.0.1:5555/game/${id}`,
+        fetch(`https://triviafaqtory-super-secret-backend.onrender.com/game/${id}`,
         {method: "DELETE",})
         .then(() => removeCard(id))
     }
@@ -40,7 +40,7 @@ function GameCard({id, name, date, letter, round1, round2, round3, round4, hidde
     }
 
     const handleSave = () => {
-      fetch(`http://127.0.0.1:5555/game/${id}`, {
+      fetch(`https://triviafaqtory-super-secret-backend.onrender.com/game/${id}`, {
           method: 'PATCH',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ name: editedName, date: editedDate, letter: editedLetter, round1: editedRound1, round2: editedRound2, round3: editedRound3, round4: editedRound4, hidden: editedHidden, player: editedPlayer, final: editedFinal }),

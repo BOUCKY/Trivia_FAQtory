@@ -7,7 +7,7 @@ function TriviaForm({addNewTrivia, setClick}){
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        fetch(`http://127.0.0.1:5555/trivia`, {
+        fetch(`https://triviafaqtory-super-secret-backend.onrender.com/trivia`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({...formData, }),

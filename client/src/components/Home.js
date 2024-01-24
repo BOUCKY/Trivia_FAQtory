@@ -22,7 +22,7 @@ function Home(){
 
     // -----FETCH REQUESTS-----
     useEffect(() => {
-        fetch('http://127.0.0.1:5555/trivia')
+        fetch('https://triviafaqtory-super-secret-backend.onrender.com/trivia')
         .then(r => r.json())
         .then(data => setTrivia(data))
     },[])
@@ -73,7 +73,7 @@ function Home(){
 
     // Edit funcitons
     const updateQuestion = (cardId, newQuestion) => {
-        fetch(`http://127.0.0.1:5555/trivia/${cardId}`, {
+        fetch(`https://triviafaqtory-super-secret-backend.onrender.com/trivia/${cardId}`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ question: newQuestion }),
@@ -95,7 +95,7 @@ function Home(){
     }
 
     const updateAnswer = (cardId, newAnswer) => {
-        fetch(`http://127.0.0.1:5555/trivia/${cardId}`, {
+        fetch(`https://triviafaqtory-super-secret-backend.onrender.com/trivia/${cardId}`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ answer: newAnswer }),
@@ -117,7 +117,7 @@ function Home(){
     }
 
     const updateSong = (cardId, newSong) => {
-        fetch(`http://127.0.0.1:5555/trivia/${cardId}`, {
+        fetch(`https://triviafaqtory-super-secret-backend.onrender.com/trivia/${cardId}`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ song: newSong }),
@@ -139,7 +139,7 @@ function Home(){
     }
     
     const updateRound = (cardId, newRound) => {
-        fetch(`http://127.0.0.1:5555/trivia/${cardId}`, {
+        fetch(`https://triviafaqtory-super-secret-backend.onrender.com/trivia/${cardId}`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ round: newRound }),

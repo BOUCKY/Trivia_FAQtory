@@ -8,7 +8,7 @@ import { faCheck } from '@fortawesome/free-solid-svg-icons'
 function PlayerCard({id, theme, song1, question1, answer1, song2, question2, answer2, song3, question3, answer3, removeCard, setTheme, setSong1, setSong2, setSong3, setQuestion1, setQuestion2, setQuestion3, setAnswer1, setAnswer2, setAnswer3}){
 
       function handleDelete(){
-          fetch(`http://127.0.0.1:5555/player/${id}`,
+          fetch(`https://triviafaqtory-super-secret-backend.onrender.com/player/${id}`,
           {method: "DELETE",})
           .then(() => removeCard(id))
       
@@ -40,7 +40,7 @@ function PlayerCard({id, theme, song1, question1, answer1, song2, question2, ans
       }
 
       const handleSave = () => {
-          fetch(`http://127.0.0.1:5555/player/${id}`, {
+          fetch(`https://triviafaqtory-super-secret-backend.onrender.com/player/${id}`, {
               method: 'PATCH',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({ theme: editedTheme, song1: editedSong1, song2: editedSong2, song3: editedSong3, question1: editedQuestion1, question2: editedQuestion2, question3: editedQuestion3, answer1: editedAnswer1, answer2: editedAnswer2, answer3: editedAnswer3 }),
